@@ -10,6 +10,30 @@
   font-weight: 300 700;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('./assets/fonts/ChakraPetch-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('./assets/fonts/ChakraPetch-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('./assets/fonts/ChakraPetch-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
 
 :root {
   --bg: #0a0a0d;
@@ -27,6 +51,7 @@
   --font-display: 'Bebas Neue', 'Oswald', Impact, 'Arial Narrow', sans-serif;
   --font-head: 'Oswald', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   --font-body: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  --font-tactical: 'Chakra Petch', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   color-scheme: dark;
 }
 
@@ -70,10 +95,41 @@ a {
 
 .app {
   min-height: 100vh;
-  background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(216, 180, 92, 0.06), transparent 60%),
-    radial-gradient(900px 500px at 0% 30%, rgba(91, 210, 230, 0.045), transparent 55%),
-    var(--bg);
+  background: transparent;
+}
+
+.app.is-hidden {
+  visibility: hidden;
+}
+
+.shell {
+  min-height: 100vh;
+}
+
+.beams-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.beams-bg canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  pointer-events: none;
+}
+
+.beams-bg__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 13, 0.34) 0%,
+    rgba(10, 10, 13, 0.18) 24%,
+    rgba(10, 10, 13, 0.28) 78%,
+    rgba(10, 10, 13, 0.55) 100%
+  );
 }
 
 .progress {
@@ -144,6 +200,8 @@ a {
 }
 
 .section {
+  position: relative;
+  z-index: 1;
   max-width: 1180px;
   margin: 0 auto;
   padding: clamp(64px, 9vw, 120px) clamp(16px, 5vw, 40px) 0;
@@ -524,6 +582,8 @@ a {
 /* ---------- Era filter ---------- */
 
 .era-filter {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -549,160 +609,279 @@ a {
 
 /* ---------- Champion hall ---------- */
 
-.era-csgo {
-  --accent: var(--gold);
-  --accent-2: var(--gold-2);
-}
-
-.era-cs2 {
-  --accent: var(--cyan);
-  --accent-2: var(--cyan-2);
-}
-
 .hall__shelf {
   display: flex;
   gap: 18px;
   overflow-x: auto;
-  padding: 8px 4px 26px;
+  padding: 12px 4px 18px;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(216, 180, 92, 0.5) transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hall__shelf::-webkit-scrollbar {
+  display: none;
 }
 
 .hall-card {
-  flex: 0 0 clamp(230px, 24vw, 268px);
+  --team-color: #d1d5db;
+  flex: 0 0 270px;
   scroll-snap-align: start;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 22px 18px 18px;
+  height: 620px;
+  padding: 16px 16px 14px;
   border-radius: 14px;
-  border: 1px solid var(--line);
-  background:
-    radial-gradient(140px 90px at 100% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent),
-    var(--card);
-  color: var(--text);
-  text-align: left;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  color: var(--text);
+  text-align: center;
+  background: rgba(18, 24, 32, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  transition: border-color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .hall-card:hover {
-  transform: translateY(-6px);
-  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
-  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.45), 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-.hall-card__year {
-  font-family: var(--font-display);
-  font-size: 46px;
-  line-height: 0.9;
-  color: var(--accent);
-}
-
-.hall-card__era {
+.hall-card__glow {
   position: absolute;
-  top: 18px;
-  right: 16px;
-  font-family: var(--font-head);
-  font-size: 11px;
-  letter-spacing: 2px;
-  padding: 4px 9px;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
-  color: var(--accent-2);
+  left: 50%;
+  top: -70px;
+  width: 240px;
+  height: 240px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--team-color);
+  opacity: 0.22;
+  filter: blur(64px);
+  pointer-events: none;
+  transition: opacity 0.3s;
 }
 
-.hall-card__trophy {
-  position: absolute;
-  right: 14px;
-  bottom: 58px;
-  font-size: 26px;
-  opacity: 0.85;
-  filter: drop-shadow(0 6px 12px rgba(216, 180, 92, 0.35));
+.hall-card:hover .hall-card__glow {
+  opacity: 0.32;
 }
 
-.hall-card__team {
+.hall-card__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hall-card__title {
+  font-family: var(--font-tactical);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.hall-card__subtitle {
+  margin-top: 2px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.hall-card__org {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  height: 44px;
+  margin-top: 8px;
 }
 
-.hall-card__team-name {
-  font-family: var(--font-head);
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.15;
+.hall-card__org img {
+  max-height: 38px;
+  max-width: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
 }
 
-.hall-card__team-title {
-  display: block;
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 4px;
+.hall-card__org-text {
+  font-family: var(--font-tactical);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.18);
 }
 
-.hall-card__team-title i {
-  font-style: normal;
-  margin: 0 5px;
-  color: var(--accent);
-}
-
-.hall-card__final {
+.hall-card__hero {
+  position: relative;
+  z-index: 1;
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.hall-card__champ-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(251, 191, 36, 0.92);
+}
+
+.hall-card__champ-logo {
+  margin: 14px 0 8px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.55));
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s;
+}
+
+.hall-card:hover .hall-card__champ-logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 16px var(--team-color));
+}
+
+.hall-card__champ-name {
+  font-family: var(--font-tactical);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 18px color-mix(in srgb, var(--team-color) 40%, transparent);
+  line-height: 1.1;
+}
+
+.hall-card__ticker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.hall-card__player {
+  font-family: var(--font-tactical);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.hall-card__roster-tag {
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.hall-card__divider {
+  width: 80%;
+  height: 1px;
+  margin: 12px auto;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+}
+
+.hall-card__brackets {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   justify-content: space-between;
-  padding-top: 12px;
-  border-top: 1px dashed var(--line);
+  padding-bottom: 2px;
 }
 
-.hall-card__final b {
-  font-family: var(--font-display);
-  font-size: 30px;
-  color: var(--text);
+.hall-tier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.hall-card__final span {
-  font-size: 12px;
-  color: var(--muted);
+.hall-tier__label {
+  margin-bottom: 6px;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
 }
 
-.hall-card__final em {
-  font-style: normal;
-  color: var(--text);
+.hall-tier__row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  min-width: 0;
+  max-width: 100%;
 }
 
-.hall-card__mvp {
-  font-size: 12px;
-  color: var(--muted);
+.hall-tier__row > span:last-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.hall-card__mvp em {
-  font-style: normal;
-  color: var(--accent-2);
+.hall-tier__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 14px;
 }
 
-.hall-card__more {
-  margin-top: auto;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: var(--accent);
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.25s, transform 0.25s;
+.hall-tier__row .tl-logo-img,
+.hall-tier__row .tl-logo-fallback {
+  flex: none;
 }
 
-.hall-card:hover .hall-card__more {
-  opacity: 1;
-  transform: none;
+.hall__progress {
+  margin: 4px auto 0;
+  max-width: 320px;
+}
+
+.hall__progress-track {
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.hall__progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+  box-shadow: 0 0 10px rgba(216, 180, 92, 0.7);
+  transition: width 0.15s linear;
 }
 
 .hall__hint {
-  margin: 4px 0 0;
+  margin: 10px 0 0;
   font-size: 12px;
   text-align: center;
   color: var(--muted);
+}
+
+/* 报告风格队标（真实 Logo 或字母兜底） */
+.tl-logo-img {
+  object-fit: contain;
+  display: block;
+}
+
+.tl-logo-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-tactical);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* ---------- Team badge ---------- */
@@ -1458,7 +1637,7 @@ a {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: var(--bg);
+  background: rgba(10, 10, 13, 0.66);
   overflow-y: auto;
   overscroll-behavior: contain;
   --accent: var(--gold);
@@ -1907,6 +2086,8 @@ a {
 }
 
 .foot {
+  position: relative;
+  z-index: 1;
   margin-top: clamp(70px, 10vw, 130px);
   padding: 30px clamp(16px, 5vw, 40px);
   border-top: 1px solid var(--line);

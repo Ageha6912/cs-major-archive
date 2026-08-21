@@ -34,4 +34,4 @@ data/team_tables.txt
 data/top20_links.json
 data/top20_liqui.json
 data/videos_candidates.json
-data/logo_fetch.json
+data/logo_fetch*.json

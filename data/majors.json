@@ -1,0 +1,1618 @@
+[
+ {
+  "id": "dhw2013",
+  "name": "Jönköping 2013",
+  "fullName": "DreamHack Winter 2013",
+  "era": "CS:GO",
+  "year": 2013,
+  "dates": "Nov 28 – 30, 2013",
+  "venue": "Elmia Exhibition and Convention Centre",
+  "location": "Jönköping, Sweden",
+  "purse": 250000,
+  "teams": 16,
+  "champion": {
+   "team": "Fnatic",
+   "roster": [
+    "Devilwalk",
+    "JW",
+    "flusha",
+    "pronax",
+    "schneider"
+   ]
+  },
+  "runnerUp": {
+   "team": "Ninjas in Pyjamas",
+   "roster": [
+    "f0rest",
+    "GeT RiGhT",
+    "Xizt",
+    "friberg",
+    "Fifflaren"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "JW",
+  "semifinalists": [
+   "compLexity Gaming",
+   "VeryGames"
+  ],
+  "quarterfinalists": [
+   "LGB eSports",
+   "Astana Dragons",
+   "Recursive eSports",
+   "Copenhagen Wolves"
+  ],
+  "participants": [
+   "Fnatic",
+   "Ninjas in Pyjamas",
+   "compLexity Gaming",
+   "VeryGames",
+   "LGB eSports",
+   "Astana Dragons",
+   "Recursive eSports",
+   "Copenhagen Wolves",
+   "Clan-Mystik",
+   "Natus Vincere",
+   "Universal Soldiers",
+   "n!faculty",
+   "Xapso",
+   "Reason Gaming",
+   "Team iBUYPOWER",
+   "SK Gaming"
+  ]
+ },
+ {
+  "id": "katowice2014",
+  "name": "Katowice 2014",
+  "fullName": "EMS One Katowice 2014",
+  "era": "CS:GO",
+  "year": 2014,
+  "dates": "Mar 13 – 16, 2014",
+  "venue": "Spodek Arena",
+  "location": "Katowice, Poland",
+  "purse": 250000,
+  "teams": 16,
+  "champion": {
+   "team": "Virtus.pro",
+   "roster": [
+    "TaZ",
+    "NEO",
+    "pashaBiceps",
+    "byali",
+    "Snax"
+   ]
+  },
+  "runnerUp": {
+   "team": "Ninjas in Pyjamas",
+   "roster": [
+    "f0rest",
+    "GeT RiGhT",
+    "Xizt",
+    "friberg",
+    "Fifflaren"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "pashaBiceps",
+  "semifinalists": [
+   "Team Dignitas",
+   "LGB eSports"
+  ],
+  "quarterfinalists": [
+   "compLexity Gaming",
+   "HellRaisers",
+   "Team LDLC.com",
+   "Fnatic"
+  ],
+  "participants": [
+   "Virtus.pro",
+   "Ninjas in Pyjamas",
+   "Team Dignitas",
+   "LGB eSports",
+   "compLexity Gaming",
+   "HellRaisers",
+   "Team LDLC.com",
+   "Fnatic",
+   "Titan",
+   "3DMAX",
+   "Reason Gaming",
+   "Clan-Mystik",
+   "mousesports",
+   "Vox Eminor",
+   "Team iBUYPOWER",
+   "Natus Vincere"
+  ]
+ },
+ {
+  "id": "cologne2014",
+  "name": "Cologne 2014",
+  "fullName": "ESL One Cologne 2014",
+  "era": "CS:GO",
+  "year": 2014,
+  "dates": "Aug 14 – 17, 2014",
+  "venue": "Cologne Exhibition Centre",
+  "location": "Cologne, North Rhine-Westphalia, Germany",
+  "purse": 250000,
+  "teams": 16,
+  "champion": {
+   "team": "Ninjas in Pyjamas",
+   "roster": [
+    "f0rest",
+    "GeT RiGhT",
+    "Xizt",
+    "friberg",
+    "Fifflaren"
+   ]
+  },
+  "runnerUp": {
+   "team": "Fnatic",
+   "roster": [
+    "JW",
+    "flusha",
+    "pronax",
+    "olofmeister",
+    "KRiMZ"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "friberg",
+  "semifinalists": [
+   "Team Dignitas",
+   "Team LDLC.com"
+  ],
+  "quarterfinalists": [
+   "Epsilon eSports",
+   "Natus Vincere",
+   "Virtus.pro",
+   "Cloud9"
+  ],
+  "participants": [
+   "Ninjas in Pyjamas",
+   "Fnatic",
+   "Team Dignitas",
+   "Team LDLC.com",
+   "Epsilon eSports",
+   "Natus Vincere",
+   "Virtus.pro",
+   "Cloud9",
+   "HellRaisers",
+   "Copenhagen Wolves",
+   "Titan",
+   "Team iBUYPOWER",
+   "Team Wolf",
+   "London Conspiracy",
+   "dAT Team",
+   "Vox Eminor"
+  ]
+ },
+ {
+  "id": "dhw2014",
+  "name": "Jönköping 2014",
+  "fullName": "DreamHack Winter 2014",
+  "era": "CS:GO",
+  "year": 2014,
+  "dates": "Nov 27 – 29, 2014",
+  "venue": "Elmia",
+  "location": "Jönköping, Sweden",
+  "purse": 250000,
+  "teams": 16,
+  "champion": {
+   "team": "Team LDLC.com",
+   "roster": [
+    "kioShiMa",
+    "Happy",
+    "SmithZz",
+    "NBK",
+    "shox"
+   ]
+  },
+  "runnerUp": {
+   "team": "Ninjas in Pyjamas",
+   "roster": [
+    "f0rest",
+    "GeT RiGhT",
+    "Xizt",
+    "friberg",
+    "Maikelele"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "Happy",
+  "semifinalists": [
+   "Natus Vincere",
+   "Virtus.pro"
+  ],
+  "quarterfinalists": [
+   "HellRaisers",
+   "Fnatic",
+   "Team Dignitas",
+   "PENTA Sports"
+  ],
+  "participants": [
+   "Team LDLC.com",
+   "Ninjas in Pyjamas",
+   "Natus Vincere",
+   "Virtus.pro",
+   "HellRaisers",
+   "Fnatic",
+   "Team Dignitas",
+   "PENTA Sports",
+   "FlipSid3 Tactics",
+   "ESC Gaming",
+   "Cloud9",
+   "Team iBUYPOWER",
+   "Bravado Gaming",
+   "Copenhagen Wolves",
+   "Planetkey Dynamics",
+   "myXMG"
+  ]
+ },
+ {
+  "id": "katowice2015",
+  "name": "Katowice 2015",
+  "fullName": "ESL One Katowice 2015",
+  "era": "CS:GO",
+  "year": 2015,
+  "dates": "Mar 12 – 15, 2015",
+  "venue": "Spodek Arena",
+  "location": "Katowice, Silesian Voivodeship, Poland",
+  "purse": 250000,
+  "teams": 16,
+  "champion": {
+   "team": "Fnatic",
+   "roster": [
+    "JW",
+    "flusha",
+    "pronax",
+    "olofmeister",
+    "KRiMZ"
+   ]
+  },
+  "runnerUp": {
+   "team": "Ninjas in Pyjamas",
+   "roster": [
+    "f0rest",
+    "GeT RiGhT",
+    "Xizt",
+    "friberg",
+    "allu"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "olofmeister",
+  "semifinalists": [
+   "Team EnVyUs",
+   "Virtus.pro"
+  ],
+  "quarterfinalists": [
+   "Keyd Stars",
+   "Natus Vincere",
+   "Team SoloMid",
+   "PENTA Sports"
+  ],
+  "participants": [
+   "Fnatic",
+   "Ninjas in Pyjamas",
+   "Team EnVyUs",
+   "Virtus.pro",
+   "Keyd Stars",
+   "Natus Vincere",
+   "Team SoloMid",
+   "PENTA Sports",
+   "Vox Eminor",
+   "LGB eSports",
+   "Cloud9",
+   "Counter Logic Gaming",
+   "Titan",
+   "FlipSid3 Tactics",
+   "HellRaisers",
+   "3DMAX"
+  ]
+ },
+ {
+  "id": "cologne2015",
+  "name": "Cologne 2015",
+  "fullName": "ESL One Cologne 2015",
+  "era": "CS:GO",
+  "year": 2015,
+  "dates": "Aug 20 – 23, 2015",
+  "venue": "Lanxess Arena",
+  "location": "Cologne, North Rhine-Westphalia, Germany",
+  "purse": 250000,
+  "teams": 16,
+  "champion": {
+   "team": "Fnatic",
+   "roster": [
+    "JW",
+    "flusha",
+    "pronax",
+    "olofmeister",
+    "KRiMZ"
+   ]
+  },
+  "runnerUp": {
+   "team": "Team EnVyUs",
+   "roster": [
+    "kioShiMa",
+    "Happy",
+    "kennyS",
+    "NBK",
+    "apEX"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "flusha",
+  "semifinalists": [
+   "Team SoloMid",
+   "Virtus.pro"
+  ],
+  "quarterfinalists": [
+   "Luminosity Gaming",
+   "Natus Vincere",
+   "Ninjas in Pyjamas",
+   "Team Kinguin"
+  ],
+  "participants": [
+   "Fnatic",
+   "Team EnVyUs",
+   "Team SoloMid",
+   "Virtus.pro",
+   "Luminosity Gaming",
+   "Natus Vincere",
+   "Ninjas in Pyjamas",
+   "Team Kinguin",
+   "Cloud9",
+   "Counter Logic Gaming",
+   "FlipSid3 Tactics",
+   "Renegades",
+   "mousesports",
+   "Team eBettle",
+   "Team Immunity",
+   "Titan"
+  ]
+ },
+ {
+  "id": "cluj2015",
+  "name": "Cluj-Napoca 2015",
+  "fullName": "DreamHack Cluj-Napoca 2015",
+  "era": "CS:GO",
+  "year": 2015,
+  "dates": "Oct 28 – Nov 1, 2015",
+  "venue": "",
+  "location": "Cluj-Napoca, Romania",
+  "purse": 250000,
+  "teams": 16,
+  "champion": {
+   "team": "Team EnVyUs",
+   "roster": [
+    "kioShiMa",
+    "Happy",
+    "kennyS",
+    "NBK",
+    "apEX"
+   ]
+  },
+  "runnerUp": {
+   "team": "Natus Vincere",
+   "roster": [
+    "Edward",
+    "Zeus",
+    "seized",
+    "flamie",
+    "GuardiaN"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "kennyS",
+  "semifinalists": [
+   "G2 Esports",
+   "Ninjas in Pyjamas"
+  ],
+  "quarterfinalists": [
+   "Fnatic",
+   "Virtus.pro",
+   "Team SoloMid",
+   "Luminosity Gaming"
+  ],
+  "participants": [
+   "Team EnVyUs",
+   "Natus Vincere",
+   "G2 Esports",
+   "Ninjas in Pyjamas",
+   "Fnatic",
+   "Virtus.pro",
+   "Team SoloMid",
+   "Luminosity Gaming",
+   "Counter Logic Gaming",
+   "mousesports",
+   "Cloud9",
+   "Team Dignitas",
+   "FlipSid3 Tactics",
+   "Team Liquid",
+   "Vexed Gaming",
+   "Titan"
+  ]
+ },
+ {
+  "id": "columbus2016",
+  "name": "Columbus 2016",
+  "fullName": "MLG Major Columbus 2016",
+  "era": "CS:GO",
+  "year": 2016,
+  "dates": "Mar 29 – Apr 3, 2016",
+  "venue": "",
+  "location": "Columbus, Ohio, US",
+  "purse": 1000000,
+  "teams": 16,
+  "champion": {
+   "team": "Luminosity Gaming",
+   "roster": [
+    "FalleN",
+    "fer",
+    "coldzera",
+    "fnx",
+    "TACO"
+   ]
+  },
+  "runnerUp": {
+   "team": "Natus Vincere",
+   "roster": [
+    "Zeus",
+    "Edward",
+    "seized",
+    "flamie",
+    "GuardiaN"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "coldzera",
+  "semifinalists": [
+   "Astralis",
+   "Team Liquid"
+  ],
+  "quarterfinalists": [
+   "Ninjas in Pyjamas",
+   "Fnatic",
+   "Counter Logic Gaming",
+   "Virtus.pro"
+  ],
+  "participants": [
+   "Luminosity Gaming",
+   "Natus Vincere",
+   "Astralis",
+   "Team Liquid",
+   "Ninjas in Pyjamas",
+   "Fnatic",
+   "Counter Logic Gaming",
+   "Virtus.pro",
+   "mousesports",
+   "FaZe Clan",
+   "Gambit Gaming",
+   "G2 Esports",
+   "FlipSid3 Tactics",
+   "Splyce",
+   "Team EnVyUs",
+   "Cloud9"
+  ]
+ },
+ {
+  "id": "cologne2016",
+  "name": "Cologne 2016",
+  "fullName": "ESL One Cologne 2016",
+  "era": "CS:GO",
+  "year": 2016,
+  "dates": "Jul 5 – 10, 2016",
+  "venue": "Lanxess Arena",
+  "location": "Cologne, North Rhine-Westphalia, Germany",
+  "purse": 1000000,
+  "teams": 16,
+  "champion": {
+   "team": "SK Gaming",
+   "roster": [
+    "FalleN",
+    "coldzera",
+    "fnx",
+    "TACO",
+    "fer"
+   ]
+  },
+  "runnerUp": {
+   "team": "Team Liquid",
+   "roster": [
+    "Hiko",
+    "EliGE",
+    "jdm64",
+    "nitr0",
+    "s1mple"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "coldzera",
+  "semifinalists": [
+   "Virtus.pro",
+   "Fnatic"
+  ],
+  "quarterfinalists": [
+   "Astralis",
+   "FlipSid3 Tactics",
+   "Natus Vincere",
+   "Gambit Gaming"
+  ],
+  "participants": [
+   "SK Gaming",
+   "Team Liquid",
+   "Virtus.pro",
+   "Fnatic",
+   "Astralis",
+   "FlipSid3 Tactics",
+   "Natus Vincere",
+   "Gambit Gaming",
+   "Team Dignitas",
+   "Ninjas in Pyjamas",
+   "mousesports",
+   "FaZe Clan",
+   "Counter Logic Gaming",
+   "OpTic Gaming",
+   "Team EnVyUs",
+   "G2 Esports"
+  ]
+ },
+ {
+  "id": "atlanta2017",
+  "name": "Atlanta 2017",
+  "fullName": "ELEAGUE Major 2017",
+  "era": "CS:GO",
+  "year": 2017,
+  "dates": "Jan 22 – 29, 2017",
+  "venue": "Fox Theatre",
+  "location": "Atlanta, Georgia (U.S. state)",
+  "purse": 1000000,
+  "teams": 16,
+  "champion": {
+   "team": "Astralis",
+   "roster": [
+    "gla1ve",
+    "dev1ce",
+    "dupreeh",
+    "Xyp9x",
+    "Kjaerbye"
+   ]
+  },
+  "runnerUp": {
+   "team": "Virtus.pro",
+   "roster": [
+    "NEO",
+    "TaZ",
+    "pashaBiceps",
+    "Snax",
+    "byali"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "Kjaerbye",
+  "semifinalists": [
+   "Fnatic",
+   "SK Gaming"
+  ],
+  "quarterfinalists": [
+   "Natus Vincere",
+   "Gambit Gaming",
+   "North",
+   "FaZe Clan"
+  ],
+  "participants": [
+   "Astralis",
+   "Virtus.pro",
+   "Fnatic",
+   "SK Gaming",
+   "Natus Vincere",
+   "Gambit Gaming",
+   "North",
+   "FaZe Clan",
+   "GODSENT",
+   "Team EnVyUs",
+   "Team Liquid",
+   "G2 Esports",
+   "mousesports",
+   "OpTic Gaming",
+   "HellRaisers",
+   "FlipSid3 Tactics"
+  ]
+ },
+ {
+  "id": "krakow2017",
+  "name": "Kraków 2017",
+  "fullName": "PGL Major Kraków 2017",
+  "era": "CS:GO",
+  "year": 2017,
+  "dates": "Jul 16 – 23, 2017",
+  "venue": "Tauron Arena Kraków",
+  "location": "Kraków, Poland",
+  "purse": 1000000,
+  "teams": 16,
+  "champion": {
+   "team": "Gambit Esports",
+   "roster": [
+    "Zeus",
+    "AdreN",
+    "HObbit",
+    "mou",
+    "Dosia"
+   ]
+  },
+  "runnerUp": {
+   "team": "Immortals",
+   "roster": [
+    "boltz",
+    "HEN1",
+    "kNg",
+    "LUCAS1",
+    "steel"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "AdreN",
+  "semifinalists": [
+   "Astralis",
+   "Virtus.pro"
+  ],
+  "quarterfinalists": [
+   "Fnatic",
+   "SK Gaming",
+   "BIG",
+   "North"
+  ],
+  "participants": [
+   "Gambit Esports",
+   "Immortals",
+   "Astralis",
+   "Virtus.pro",
+   "Fnatic",
+   "SK Gaming",
+   "BIG",
+   "North",
+   "Cloud9",
+   "FlipSid3 Tactics",
+   "G2 Esports",
+   "Natus Vincere",
+   "mousesports",
+   "PENTA Sports",
+   "FaZe Clan",
+   "Vega Squadron"
+  ]
+ },
+ {
+  "id": "boston2018",
+  "name": "Boston 2018",
+  "fullName": "ELEAGUE Major Boston 2018",
+  "era": "CS:GO",
+  "year": 2018,
+  "dates": "Jan 12 – 28, 2018",
+  "venue": "Agganis Arena",
+  "location": "Atlanta, Georgia (U.S. state)",
+  "purse": 1000000,
+  "teams": 24,
+  "champion": {
+   "team": "Cloud9",
+   "roster": [
+    "tarik",
+    "autimatic",
+    "RUSH",
+    "Skadoodle",
+    "Stewie2K"
+   ]
+  },
+  "runnerUp": {
+   "team": "FaZe Clan",
+   "roster": [
+    "karrigan",
+    "GuardiaN",
+    "NiKo",
+    "olofmeister",
+    "rain"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "tarik",
+  "semifinalists": [
+   "Natus Vincere",
+   "SK Gaming"
+  ],
+  "quarterfinalists": [
+   "Fnatic",
+   "G2 Esports",
+   "mousesports",
+   "Quantum Bellator Fire"
+  ],
+  "participants": [
+   "Cloud9",
+   "FaZe Clan",
+   "Natus Vincere",
+   "SK Gaming",
+   "Fnatic",
+   "G2 Esports",
+   "mousesports",
+   "Quantum Bellator Fire",
+   "Gambit Esports",
+   "Space Soldiers",
+   "Vega Squadron",
+   "Astralis",
+   "BIG",
+   "Team Liquid",
+   "North",
+   "Virtus.pro",
+   "AVANGAR",
+   "Renegades",
+   "Misfits Gaming",
+   "Sprout Esports",
+   "Team EnVyUs",
+   "Flash Gaming",
+   "FlipSid3 Tactics",
+   "100 Thieves"
+  ]
+ },
+ {
+  "id": "london2018",
+  "name": "London 2018",
+  "fullName": "FACEIT Major London 2018",
+  "era": "CS:GO",
+  "year": 2018,
+  "dates": "Sep 5 – 23, 2018",
+  "venue": "The SSE Arena, Wembley",
+  "location": "London, United Kingdom",
+  "purse": 1000000,
+  "teams": 24,
+  "champion": {
+   "team": "Astralis",
+   "roster": [
+    "gla1ve",
+    "dev1ce",
+    "dupreeh",
+    "Magisk",
+    "Xyp9x"
+   ]
+  },
+  "runnerUp": {
+   "team": "Natus Vincere",
+   "roster": [
+    "Zeus",
+    "Edward",
+    "s1mple",
+    "electronic",
+    "flamie"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "dev1ce",
+  "semifinalists": [
+   "MIBR",
+   "Team Liquid"
+  ],
+  "quarterfinalists": [
+   "BIG",
+   "compLexity Gaming",
+   "FaZe Clan",
+   "HellRaisers"
+  ],
+  "participants": [
+   "Astralis",
+   "Natus Vincere",
+   "MIBR",
+   "Team Liquid",
+   "BIG",
+   "compLexity Gaming",
+   "FaZe Clan",
+   "HellRaisers",
+   "Fnatic",
+   "G2 Esports",
+   "Ninjas in Pyjamas",
+   "Cloud9",
+   "TyLoo",
+   "Vega Squadron",
+   "mousesports",
+   "Winstrike Team",
+   "North",
+   "OpTic Gaming",
+   "Team Spirit",
+   "Gambit Esports",
+   "Renegades",
+   "Rogue",
+   "Space Soldiers",
+   "Virtus.pro"
+  ]
+ },
+ {
+  "id": "katowice2019",
+  "name": "Katowice 2019",
+  "fullName": "IEM Katowice 2019",
+  "era": "CS:GO",
+  "year": 2019,
+  "dates": "Feb 13 – Mar 3, 2019",
+  "venue": "{{ill|Katowice MCK|pl|Międzynarodowe Centrum Kongresowe w Katowicach|vertical-align=sup | Spodek",
+  "location": "Katowice, Silesian Voivodeship, Poland",
+  "purse": 1000000,
+  "teams": 24,
+  "champion": {
+   "team": "Astralis",
+   "roster": [
+    "gla1ve",
+    "dev1ce",
+    "dupreeh",
+    "Magisk",
+    "Xyp9x"
+   ]
+  },
+  "runnerUp": {
+   "team": "ENCE",
+   "roster": [
+    "Aleksib",
+    "Aerial",
+    "allu",
+    "sergej",
+    "xseven"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "Magisk",
+  "semifinalists": [
+   "MIBR",
+   "Natus Vincere"
+  ],
+  "quarterfinalists": [
+   "FaZe Clan",
+   "Ninjas in Pyjamas",
+   "Renegades",
+   "Team Liquid"
+  ],
+  "participants": [
+   "Astralis",
+   "ENCE",
+   "MIBR",
+   "Natus Vincere",
+   "FaZe Clan",
+   "Ninjas in Pyjamas",
+   "Renegades",
+   "Team Liquid",
+   "AVANGAR",
+   "Cloud9",
+   "Team Vitality",
+   "compLexity Gaming",
+   "G2 Esports",
+   "HellRaisers",
+   "BIG",
+   "NRG Esports",
+   "TyLoo",
+   "ViCi Gaming",
+   "Winstrike Team",
+   "Fnatic",
+   "FURIA Esports",
+   "Vega Squadron",
+   "Grayhound Gaming",
+   "Team Spirit"
+  ]
+ },
+ {
+  "id": "berlin2019",
+  "name": "Berlin 2019",
+  "fullName": "StarLadder Major Berlin 2019",
+  "era": "CS:GO",
+  "year": 2019,
+  "dates": "Aug 23 – Sep 8, 2019",
+  "venue": "Mercedes-Benz Arena (Berlin)|Mercedes-Benz Arena",
+  "location": "Berlin, Germany",
+  "purse": 1000000,
+  "teams": 24,
+  "champion": {
+   "team": "Astralis",
+   "roster": [
+    "gla1ve",
+    "dev1ce",
+    "dupreeh",
+    "Magisk",
+    "Xyp9x"
+   ]
+  },
+  "runnerUp": {
+   "team": "AVANGAR",
+   "roster": [
+    "Jame",
+    "buster",
+    "qikert",
+    "Sanji",
+    "AdreN"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "dev1ce",
+  "semifinalists": [
+   "Renegades",
+   "NRG Esports"
+  ],
+  "quarterfinalists": [
+   "ENCE",
+   "Team Vitality",
+   "Natus Vincere",
+   "Team Liquid"
+  ],
+  "participants": [
+   "Astralis",
+   "AVANGAR",
+   "Renegades",
+   "NRG Esports",
+   "ENCE",
+   "Team Vitality",
+   "Natus Vincere",
+   "Team Liquid",
+   "mousesports",
+   "CR4ZY",
+   "G2 Esports",
+   "MIBR",
+   "FaZe Clan",
+   "North",
+   "Ninjas in Pyjamas",
+   "DreamEaters",
+   "forZe",
+   "Grayhound Gaming",
+   "Syman Gaming",
+   "FURIA Esports",
+   "HellRaisers",
+   "compLexity Gaming",
+   "TyLoo",
+   "INTZ eSports"
+  ]
+ },
+ {
+  "id": "stockholm2021",
+  "name": "Stockholm 2021",
+  "fullName": "PGL Major Stockholm 2021",
+  "era": "CS:GO",
+  "year": 2021,
+  "dates": "Oct 26 – Nov 7, 2021",
+  "venue": "Avicii Arena",
+  "location": "Stockholm, Sweden",
+  "purse": 2000000,
+  "teams": 24,
+  "champion": {
+   "team": "Natus Vincere",
+   "roster": [
+    "s1mple",
+    "electroNic",
+    "Boombl4",
+    "Perfecto",
+    "b1t"
+   ]
+  },
+  "runnerUp": {
+   "team": "G2 Esports",
+   "roster": [
+    "JaCkz",
+    "AmaNEk",
+    "nexa",
+    "huNter-",
+    "NiKo"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "s1mple",
+  "semifinalists": [
+   "Heroic",
+   "Gambit Esports"
+  ],
+  "quarterfinalists": [
+   "Team Vitality",
+   "FURIA Esports",
+   "Virtus.pro",
+   "Ninjas in Pyjamas"
+  ],
+  "participants": [
+   "Natus Vincere",
+   "G2 Esports",
+   "Heroic",
+   "Gambit Esports",
+   "Team Vitality",
+   "FURIA Esports",
+   "Virtus.pro",
+   "Ninjas in Pyjamas",
+   "Entropiq",
+   "Copenhagen Flames",
+   "FaZe Clan",
+   "Astralis",
+   "MOUZ",
+   "Team Liquid",
+   "Evil Geniuses",
+   "ENCE",
+   "BIG",
+   "Movistar Riders",
+   "Team Spirit",
+   "paiN Gaming",
+   "Renegades",
+   "TyLoo",
+   "GODSENT",
+   "Sharks Esports"
+  ]
+ },
+ {
+  "id": "antwerp2022",
+  "name": "Antwerp 2022",
+  "fullName": "PGL Major Antwerp 2022",
+  "era": "CS:GO",
+  "year": 2022,
+  "dates": "May 9 – 22, 2022",
+  "venue": "Sportpaleis",
+  "location": "Antwerp, Belgium",
+  "purse": 1000000,
+  "teams": 24,
+  "champion": {
+   "team": "FaZe Clan",
+   "roster": [
+    "rain",
+    "broky",
+    "Twistzz",
+    "karrigan",
+    "ropz"
+   ]
+  },
+  "runnerUp": {
+   "team": "Natus Vincere",
+   "roster": [
+    "s1mple",
+    "electronic",
+    "Boombl4",
+    "Perfecto",
+    "b1t"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "rain",
+  "semifinalists": [
+   "Team Spirit",
+   "ENCE"
+  ],
+  "quarterfinalists": [
+   "FURIA Esports",
+   "Ninjas in Pyjamas",
+   "Copenhagen Flames",
+   "Heroic"
+  ],
+  "participants": [
+   "FaZe Clan",
+   "Natus Vincere",
+   "Team Spirit",
+   "ENCE",
+   "FURIA Esports",
+   "Ninjas in Pyjamas",
+   "Copenhagen Flames",
+   "Heroic",
+   "G2 Esports",
+   "Team Vitality",
+   "Imperial Esports",
+   "Cloud9",
+   "BIG",
+   "Outsiders",
+   "Bad News Eagles",
+   "Team Liquid",
+   "forZe",
+   "Astralis",
+   "MIBR",
+   "compLexity Gaming",
+   "Eternal Fire",
+   "IHC Esports",
+   "Renegades",
+   "9z Team"
+  ]
+ },
+ {
+  "id": "rio2022",
+  "name": "Rio 2022",
+  "fullName": "IEM Rio Major 2022",
+  "era": "CS:GO",
+  "year": 2022,
+  "dates": "Oct 31 – Nov 13, 2022",
+  "venue": "Riocentro Arena\\nChampions Stage: Jeunesse Arena",
+  "location": "Rio de Janeiro, Brazil",
+  "purse": 1250000,
+  "teams": 24,
+  "champion": {
+   "team": "Outsiders",
+   "roster": [
+    "Jame",
+    "FL1T",
+    "fame",
+    "n0rb3r7",
+    "Qikert"
+   ]
+  },
+  "runnerUp": {
+   "team": "Heroic",
+   "roster": [
+    "cadiaN",
+    "TeSeS",
+    "jabbi",
+    "sjuush",
+    "stavn"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "Jame",
+  "semifinalists": [
+   "FURIA Esports",
+   "MOUZ"
+  ],
+  "quarterfinalists": [
+   "Team Spirit",
+   "Cloud9",
+   "Fnatic",
+   "Natus Vincere"
+  ],
+  "participants": [
+   "Outsiders",
+   "Heroic",
+   "FURIA Esports",
+   "MOUZ",
+   "Team Spirit",
+   "Cloud9",
+   "Fnatic",
+   "Natus Vincere",
+   "BIG",
+   "Team Liquid",
+   "ENCE",
+   "Bad News Eagles",
+   "Team Vitality",
+   "Sprout",
+   "FaZe Clan",
+   "Ninjas in Pyjamas",
+   "OG",
+   "Team GamerLegion",
+   "9z Team",
+   "Grayhound Gaming",
+   "IHC Esports",
+   "Evil Geniuses",
+   "00 Nation",
+   "Imperial Esports"
+  ]
+ },
+ {
+  "id": "paris2023",
+  "name": "Paris 2023",
+  "fullName": "BLAST.tv Paris Major 2023",
+  "era": "CS:GO",
+  "year": 2023,
+  "dates": "May 8 – 21, 2023",
+  "venue": "Accor Arena",
+  "location": "Paris, France",
+  "purse": 1250000,
+  "teams": 24,
+  "champion": {
+   "team": "Team Vitality",
+   "roster": [
+    "apEX",
+    "ZywOo",
+    "dupreeh",
+    "Magisk",
+    "Spinx"
+   ]
+  },
+  "runnerUp": {
+   "team": "GamerLegion",
+   "roster": [
+    "siuhy",
+    "iM",
+    "acoR",
+    "isak",
+    "Keoz"
+   ]
+  },
+  "score": "2–0",
+  "mvp": "ZywOo",
+  "semifinalists": [
+   "Apeks",
+   "Heroic"
+  ],
+  "quarterfinalists": [
+   "Team Liquid",
+   "FaZe Clan",
+   "Monte",
+   "Into the Breach"
+  ],
+  "participants": [
+   "Team Vitality",
+   "GamerLegion",
+   "Apeks",
+   "Heroic",
+   "Team Liquid",
+   "FaZe Clan",
+   "Monte",
+   "Into The Breach",
+   "Fnatic",
+   "Natus Vincere",
+   "Ninjas in Pyjamas",
+   "G2 Esports",
+   "ENCE",
+   "Bad News Eagles",
+   "FURIA Esports",
+   "9INE",
+   "paiN Gaming",
+   "FORZE",
+   "compLexity Gaming",
+   "The MongolZ",
+   "OG",
+   "MOUZ",
+   "Fluxo",
+   "Grayhound Gaming"
+  ]
+ },
+ {
+  "id": "copenhagen2024",
+  "name": "Copenhagen 2024",
+  "fullName": "PGL CS2 Major Copenhagen 2024",
+  "era": "CS2",
+  "year": 2024,
+  "dates": "Mar 17 – 31, 2024",
+  "venue": "Royal Arena",
+  "location": "Copenhagen, Denmark",
+  "purse": 1250000,
+  "teams": 24,
+  "champion": {
+   "team": "Natus Vincere",
+   "roster": [
+    "Aleksib",
+    "iM",
+    "b1t",
+    "jL",
+    "w0nderful"
+   ]
+  },
+  "runnerUp": {
+   "team": "FaZe Clan",
+   "roster": [
+    "karrigan",
+    "rain",
+    "frozen",
+    "broky",
+    "ropz"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "jL",
+  "semifinalists": [
+   "G2 Esports",
+   "Team Vitality"
+  ],
+  "quarterfinalists": [
+   "MOUZ",
+   "Eternal Fire",
+   "Team Spirit",
+   "Cloud9"
+  ],
+  "participants": [
+   "Natus Vincere",
+   "FaZe Clan",
+   "G2 Esports",
+   "Team Vitality",
+   "MOUZ",
+   "Eternal Fire",
+   "Team Spirit",
+   "Cloud9",
+   "paiN Gaming",
+   "Virtus.pro",
+   "compLexity Gaming",
+   "HEROIC",
+   "ECSTATIC",
+   "Imperial Esports",
+   "FURIA Esports",
+   "The MongolZ",
+   "SAW",
+   "GamerLegion",
+   "Legacy",
+   "ENCE",
+   "Apeks",
+   "Lynn Vision",
+   "Movistar KOI",
+   "AMKAL ESPORTS"
+  ]
+ },
+ {
+  "id": "shanghai2024",
+  "name": "Shanghai 2024",
+  "fullName": "Perfect World Shanghai Major 2024",
+  "era": "CS2",
+  "year": 2024,
+  "dates": "Nov 30 – Dec 15, 2024",
+  "venue": "Shanghai Oriental Sports Center (Playoffs stage)",
+  "location": "Shanghai, China",
+  "purse": 1250000,
+  "teams": 24,
+  "champion": {
+   "team": "Team Spirit",
+   "roster": [
+    "donk",
+    "chopper",
+    "sh1ro",
+    "zont1x",
+    "magixx"
+   ]
+  },
+  "runnerUp": {
+   "team": "FaZe Clan",
+   "roster": [
+    "ropz",
+    "frozen",
+    "broky",
+    "rain",
+    "karrigan"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "donk",
+  "semifinalists": [
+   "G2 Esports",
+   "MOUZ"
+  ],
+  "quarterfinalists": [
+   "Team Vitality",
+   "Heroic",
+   "Team Liquid",
+   "The MongolZ"
+  ],
+  "participants": [
+   "Team Spirit",
+   "FaZe Clan",
+   "G2 Esports",
+   "MOUZ",
+   "Team Vitality",
+   "HEROIC",
+   "Team Liquid",
+   "The MongolZ",
+   "FURIA Esports",
+   "Natus Vincere",
+   "MIBR",
+   "GamerLegion",
+   "paiN Gaming",
+   "3DMAX",
+   "BIG",
+   "Wildcard",
+   "Passion UA",
+   "FlyQuest",
+   "compLexity Gaming",
+   "Virtus.pro",
+   "Cloud9",
+   "Rare Atom",
+   "Imperial Esports",
+   "fnatic"
+  ]
+ },
+ {
+  "id": "austin2025",
+  "name": "Austin 2025",
+  "fullName": "BLAST.tv Austin Major 2025",
+  "era": "CS2",
+  "year": 2025,
+  "dates": "Jun 3 – 22, 2025",
+  "venue": "Moody Center",
+  "location": "Austin, Texas, United States",
+  "purse": 1250000,
+  "teams": 32,
+  "champion": {
+   "team": "Team Vitality",
+   "roster": [
+    "apEX",
+    "ZywOo",
+    "flameZ",
+    "mezii",
+    "ropz"
+   ]
+  },
+  "runnerUp": {
+   "team": "The MongolZ",
+   "roster": [
+    "bLitz",
+    "Techno4K",
+    "910",
+    "mzinho",
+    "Senzu"
+   ]
+  },
+  "score": "2–1",
+  "mvp": "ZywOo",
+  "semifinalists": [
+   "MOUZ",
+   "paiN Gaming"
+  ],
+  "quarterfinalists": [
+   "Team Spirit",
+   "FURIA Esports",
+   "FaZe Clan",
+   "Natus Vincere"
+  ],
+  "participants": [
+   "Team Vitality",
+   "The MongolZ",
+   "MOUZ",
+   "paiN Gaming",
+   "Team Spirit",
+   "FURIA Esports",
+   "FaZe Clan",
+   "Natus Vincere",
+   "Virtus.pro",
+   "Legacy",
+   "G2 Esports",
+   "Aurora Gaming",
+   "3DMAX",
+   "Lynn Vision Gaming",
+   "Nemiga Gaming",
+   "Team Liquid",
+   "B8",
+   "MIBR",
+   "HEROIC",
+   "TYLOO",
+   "M80",
+   "Team Falcons",
+   "BetBoom Team",
+   "OG Esports",
+   "FlyQuest",
+   "NRG Esports",
+   "Wildcard",
+   "Imperial Esports",
+   "Chinggis Warriors",
+   "compLexity Gaming",
+   "Metizport",
+   "Fluxo"
+  ]
+ },
+ {
+  "id": "budapest2025",
+  "name": "Budapest 2025",
+  "fullName": "StarLadder Budapest Major 2025",
+  "era": "CS2",
+  "year": 2025,
+  "dates": "Nov 24 – Dec 14, 2025",
+  "venue": "MVM Dome (Playoffs stage)",
+  "location": "Budapest, Hungary",
+  "purse": 1250000,
+  "teams": 32,
+  "champion": {
+   "team": "Team Vitality",
+   "roster": [
+    "apEX",
+    "ZywOo",
+    "flameZ",
+    "mezii",
+    "ropz"
+   ]
+  },
+  "runnerUp": {
+   "team": "FaZe Clan",
+   "roster": [
+    "karrigan",
+    "jcobbb",
+    "broky",
+    "frozen",
+    "rain"
+   ]
+  },
+  "score": "3–1",
+  "mvp": "ZywOo",
+  "semifinalists": [
+   "Team Spirit",
+   "Natus Vincere"
+  ],
+  "quarterfinalists": [
+   "FURIA Esports",
+   "MOUZ",
+   "The MongolZ",
+   "Team Falcons"
+  ],
+  "participants": [
+   "Team Vitality",
+   "FaZe Clan",
+   "Team Spirit",
+   "Natus Vincere",
+   "FURIA Esports",
+   "MOUZ",
+   "The MongolZ",
+   "Team Falcons",
+   "B8 Esports",
+   "G2 Esports",
+   "Passion UA",
+   "Imperial Esports",
+   "3DMAX",
+   "paiN Gaming",
+   "Team Liquid",
+   "PARIVISION",
+   "Ninjas in Pyjamas",
+   "M80",
+   "Astralis",
+   "fnatic",
+   "Aurora Gaming",
+   "TYLOO",
+   "MIBR",
+   "FlyQuest",
+   "NRG Esports",
+   "Fluxo",
+   "Legacy",
+   "The Huns Esports",
+   "RED Canids",
+   "GamerLegion",
+   "Lynn Vision Gaming",
+   "Rare Atom"
+  ]
+ },
+ {
+  "id": "cologne2026",
+  "name": "Cologne 2026",
+  "fullName": "IEM Cologne Major 2026",
+  "era": "CS2",
+  "year": 2026,
+  "dates": "Jun 2 – 21, 2026",
+  "venue": "Palladium (Stage 3) | Lanxess Arena (Playoffs)",
+  "location": "Cologne, Germany",
+  "purse": 1250000,
+  "teams": 32,
+  "champion": {
+   "team": "Team Falcons",
+   "roster": [
+    "kyousuke",
+    "kyxsan",
+    "m0NESY",
+    "NiKo",
+    "TeSeS"
+   ]
+  },
+  "runnerUp": {
+   "team": "FURIA Esports",
+   "roster": [
+    "FalleN",
+    "KSCERATO",
+    "molodoy",
+    "YEKINDAR",
+    "yuurih"
+   ]
+  },
+  "score": "3–0",
+  "mvp": "m0NESY",
+  "semifinalists": [
+   "Team Spirit",
+   "Aurora Gaming"
+  ],
+  "quarterfinalists": [
+   "Team Vitality",
+   "BetBoom Team",
+   "9z Team",
+   "G2 Esports"
+  ],
+  "participants": [
+   "Team Falcons",
+   "FURIA Esports",
+   "Team Spirit",
+   "Aurora Gaming",
+   "Team Vitality",
+   "BetBoom Team",
+   "9z Team",
+   "G2 Esports",
+   "Natus Vincere",
+   "FUT Esports",
+   "The MongolZ",
+   "MOUZ",
+   "Monte",
+   "Legacy",
+   "B8 Esports",
+   "PARIVISION",
+   "TYLOO",
+   "BIG",
+   "paiN Gaming",
+   "M80",
+   "MIBR",
+   "Astralis",
+   "FlyQuest",
+   "GamerLegion",
+   "Team Liquid",
+   "NRG Esports",
+   "Lynn Vision Gaming",
+   "THUNDER dOWNUNDER",
+   "Sharks Esports",
+   "HEROIC",
+   "Gaimin Gladiators",
+   "SINNERS Esports"
+  ]
+ }
+]

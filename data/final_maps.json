@@ -1,0 +1,484 @@
+{
+ "dhw2013": [
+  {
+   "map": "Dust II",
+   "scores": [
+    16,
+    14
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    6,
+    16
+   ]
+  },
+  {
+   "map": "Train",
+   "scores": [
+    16,
+    2
+   ]
+  }
+ ],
+ "katowice2014": [
+  {
+   "map": "Mirage",
+   "scores": [
+    16,
+    9
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    16,
+    10
+   ]
+  }
+ ],
+ "cologne2014": [
+  {
+   "map": "Cobblestone",
+   "scores": [
+    16,
+    11
+   ]
+  },
+  {
+   "map": "Cache",
+   "scores": [
+    8,
+    16
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    16,
+    13
+   ]
+  }
+ ],
+ "dhw2014": [
+  {
+   "map": "Overpass",
+   "scores": [
+    16,
+    13
+   ]
+  },
+  {
+   "map": "Dust II",
+   "scores": [
+    16,
+    10
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    4,
+    16
+   ]
+  }
+ ],
+ "katowice2015": [
+  {
+   "map": "Dust II",
+   "scores": [
+    16,
+    14
+   ]
+  },
+  {
+   "map": "Cache",
+   "scores": [
+    10,
+    16
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    16,
+    13
+   ]
+  }
+ ],
+ "cologne2015": [
+  {
+   "map": "Dust II",
+   "scores": [
+    19,
+    15
+   ]
+  },
+  {
+   "map": "Cobblestone",
+   "scores": [
+    16,
+    7
+   ]
+  }
+ ],
+ "cluj2015": [
+  {
+   "map": "Mirage",
+   "scores": [
+    16,
+    9
+   ]
+  },
+  {
+   "map": "Train",
+   "scores": [
+    16,
+    14
+   ]
+  },
+  {
+   "map": "Cobblestone",
+   "scores": [
+    16,
+    5
+   ]
+  }
+ ],
+ "columbus2016": [
+  {
+   "map": "Mirage",
+   "scores": [
+    19,
+    17
+   ]
+  },
+  {
+   "map": "Overpass",
+   "scores": [
+    16,
+    2
+   ]
+  }
+ ],
+ "cologne2016": [
+  {
+   "map": "Train",
+   "scores": [
+    16,
+    7
+   ]
+  },
+  {
+   "map": "Cobblestone",
+   "scores": [
+    16,
+    6
+   ]
+  }
+ ],
+ "atlanta2017": [
+  {
+   "map": "Overpass",
+   "scores": [
+    16,
+    7
+   ]
+  },
+  {
+   "map": "Mirage",
+   "scores": [
+    14,
+    16
+   ]
+  },
+  {
+   "map": "Dust II",
+   "scores": [
+    16,
+    10
+   ]
+  }
+ ],
+ "krakow2017": [
+  {
+   "map": "Cobblestone",
+   "scores": [
+    4,
+    16
+   ]
+  },
+  {
+   "map": "Train",
+   "scores": [
+    16,
+    11
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    16,
+    10
+   ]
+  }
+ ],
+ "boston2018": [
+  {
+   "map": "Mirage",
+   "scores": [
+    14,
+    16
+   ]
+  },
+  {
+   "map": "Overpass",
+   "scores": [
+    16,
+    10
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    22,
+    19
+   ]
+  }
+ ],
+ "london2018": [
+  {
+   "map": "Nuke",
+   "scores": [
+    16,
+    6
+   ]
+  },
+  {
+   "map": "Overpass",
+   "scores": [
+    16,
+    9
+   ]
+  }
+ ],
+ "katowice2019": [
+  {
+   "map": "Train",
+   "scores": [
+    16,
+    11
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    16,
+    4
+   ]
+  }
+ ],
+ "berlin2019": [
+  {
+   "map": "Inferno",
+   "scores": [
+    16,
+    6
+   ]
+  },
+  {
+   "map": "Dust II",
+   "scores": [
+    16,
+    5
+   ]
+  }
+ ],
+ "stockholm2021": [
+  {
+   "map": "Ancient",
+   "scores": [
+    16,
+    11
+   ]
+  },
+  {
+   "map": "Nuke",
+   "scores": [
+    22,
+    19
+   ]
+  }
+ ],
+ "antwerp2022": [
+  {
+   "map": "Inferno",
+   "scores": [
+    19,
+    16
+   ]
+  },
+  {
+   "map": "Nuke",
+   "scores": [
+    16,
+    10
+   ]
+  }
+ ],
+ "rio2022": [
+  {
+   "map": "Mirage",
+   "scores": [
+    16,
+    12
+   ]
+  },
+  {
+   "map": "Overpass",
+   "scores": [
+    16,
+    5
+   ]
+  }
+ ],
+ "paris2023": [
+  {
+   "map": "Overpass",
+   "scores": [
+    16,
+    6
+   ]
+  },
+  {
+   "map": "Nuke",
+   "scores": [
+    16,
+    13
+   ]
+  }
+ ],
+ "copenhagen2024": [
+  {
+   "map": "Ancient",
+   "scores": [
+    11,
+    13
+   ]
+  },
+  {
+   "map": "Mirage",
+   "scores": [
+    13,
+    2
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    13,
+    3
+   ]
+  }
+ ],
+ "shanghai2024": [
+  {
+   "map": "Nuke",
+   "scores": [
+    13,
+    8
+   ]
+  },
+  {
+   "map": "Ancient",
+   "scores": [
+    6,
+    13
+   ]
+  },
+  {
+   "map": "Dust II",
+   "scores": [
+    13,
+    11
+   ]
+  }
+ ],
+ "austin2025": [
+  {
+   "map": "Mirage",
+   "scores": [
+    5,
+    13
+   ]
+  },
+  {
+   "map": "Dust II",
+   "scores": [
+    13,
+    4
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    13,
+    6
+   ]
+  }
+ ],
+ "budapest2025": [
+  {
+   "map": "Nuke",
+   "scores": [
+    6,
+    13
+   ]
+  },
+  {
+   "map": "Dust II",
+   "scores": [
+    13,
+    3
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    13,
+    9
+   ]
+  },
+  {
+   "map": "Overpass",
+   "scores": [
+    13,
+    2
+   ]
+  }
+ ],
+ "cologne2026": [
+  {
+   "map": "Mirage",
+   "scores": [
+    13,
+    8
+   ]
+  },
+  {
+   "map": "Anubis",
+   "scores": [
+    13,
+    8
+   ]
+  },
+  {
+   "map": "Inferno",
+   "scores": [
+    13,
+    8
+   ]
+  }
+ ]
+}

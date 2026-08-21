@@ -1,0 +1,1588 @@
+{
+ "2013": [
+  {
+   "rank": 1,
+   "player": "GeT_RiGhT",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 2,
+   "player": "f0rest",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 3,
+   "player": "shox",
+   "country": "🇫🇷",
+   "team": "VeryGames"
+  },
+  {
+   "rank": 4,
+   "player": "Dosia",
+   "country": "🇷🇺",
+   "team": "Astana Dragons"
+  },
+  {
+   "rank": 5,
+   "player": "NBK",
+   "country": "🇫🇷",
+   "team": "VeryGames"
+  },
+  {
+   "rank": 6,
+   "player": "Xizt",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 7,
+   "player": "ScreaM",
+   "country": "🇧🇪",
+   "team": "VeryGames"
+  },
+  {
+   "rank": 8,
+   "player": "JW",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 9,
+   "player": "Hiko",
+   "country": "🇺🇸",
+   "team": "compLexity Gaming"
+  },
+  {
+   "rank": 10,
+   "player": "GuardiaN",
+   "country": "🇸🇰",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 11,
+   "player": "friberg",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 12,
+   "player": "kennyS",
+   "country": "🇫🇷",
+   "team": "Recursive eSports"
+  },
+  {
+   "rank": 13,
+   "player": "flusha",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 14,
+   "player": "Nico",
+   "country": "🇩🇰",
+   "team": "Copenhagen Wolves"
+  },
+  {
+   "rank": 15,
+   "player": "markeloff",
+   "country": "🇺🇦",
+   "team": "Astana Dragons"
+  },
+  {
+   "rank": 16,
+   "player": "Edward",
+   "country": "🇺🇦",
+   "team": "Astana Dragons"
+  },
+  {
+   "rank": 17,
+   "player": "SmithZz",
+   "country": "🇫🇷",
+   "team": "VeryGames"
+  },
+  {
+   "rank": 18,
+   "player": "dupreeh",
+   "country": "🇩🇰",
+   "team": "Copenhagen Wolves"
+  },
+  {
+   "rank": 19,
+   "player": "pashaBiceps",
+   "country": "🇵🇱",
+   "team": "AGAiN"
+  },
+  {
+   "rank": 20,
+   "player": "Xyp9x",
+   "country": "🇩🇰",
+   "team": "Copenhagen Wolves"
+  }
+ ],
+ "2014": [
+  {
+   "rank": 1,
+   "player": "GeT_RiGhT",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 2,
+   "player": "flusha",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 3,
+   "player": "pashaBiceps",
+   "country": "🇵🇱",
+   "team": "Virtus.pro"
+  },
+  {
+   "rank": 4,
+   "player": "Snax",
+   "country": "🇵🇱",
+   "team": "Virtus.pro"
+  },
+  {
+   "rank": 5,
+   "player": "JW",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 6,
+   "player": "kennyS",
+   "country": "🇫🇷",
+   "team": "Titan"
+  },
+  {
+   "rank": 7,
+   "player": "f0rest",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 8,
+   "player": "shox",
+   "country": "🇫🇷",
+   "team": "Team LDLC.com"
+  },
+  {
+   "rank": 9,
+   "player": "KRIMZ",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 10,
+   "player": "Happy",
+   "country": "🇫🇷",
+   "team": "Team LDLC.com"
+  },
+  {
+   "rank": 11,
+   "player": "GuardiaN",
+   "country": "🇸🇰",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 12,
+   "player": "olofmeister",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 13,
+   "player": "byali",
+   "country": "🇵🇱",
+   "team": "Virtus.pro"
+  },
+  {
+   "rank": 14,
+   "player": "friberg",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 15,
+   "player": "apEX",
+   "country": "🇫🇷",
+   "team": "Team LDLC.com"
+  },
+  {
+   "rank": 16,
+   "player": "dupreeh",
+   "country": "🇩🇰",
+   "team": "Team Dignitas"
+  },
+  {
+   "rank": 17,
+   "player": "NBK",
+   "country": "🇫🇷",
+   "team": "Team LDLC.com"
+  },
+  {
+   "rank": 18,
+   "player": "swag",
+   "country": "🇺🇸",
+   "team": "Team iBUYPOWER"
+  },
+  {
+   "rank": 19,
+   "player": "kioShiMa",
+   "country": "🇫🇷",
+   "team": "Team LDLC.com"
+  },
+  {
+   "rank": 20,
+   "player": "dev1ce",
+   "country": "🇩🇰",
+   "team": "Team Dignitas"
+  }
+ ],
+ "2015": [
+  {
+   "rank": 1,
+   "player": "olofmeister",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 2,
+   "player": "GuardiaN",
+   "country": "🇸🇰",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 3,
+   "player": "dev1ce",
+   "country": "🇩🇰",
+   "team": "Team SoloMid"
+  },
+  {
+   "rank": 4,
+   "player": "Snax",
+   "country": "🇵🇱",
+   "team": "Virtus.pro"
+  },
+  {
+   "rank": 5,
+   "player": "flusha",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 6,
+   "player": "kennyS",
+   "country": "🇫🇷",
+   "team": "Team EnVyUs"
+  },
+  {
+   "rank": 7,
+   "player": "KRIMZ",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 8,
+   "player": "Happy",
+   "country": "🇫🇷",
+   "team": "Team EnVyUs"
+  },
+  {
+   "rank": 9,
+   "player": "NBK-",
+   "country": "🇫🇷",
+   "team": "Team EnVyUs"
+  },
+  {
+   "rank": 10,
+   "player": "JW",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 11,
+   "player": "GeT_RiGhT",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 12,
+   "player": "dupreeh",
+   "country": "🇩🇰",
+   "team": "Team SoloMid"
+  },
+  {
+   "rank": 13,
+   "player": "shox",
+   "country": "🇫🇷",
+   "team": "Team EnVyUs"
+  },
+  {
+   "rank": 14,
+   "player": "flamie",
+   "country": "🇷🇺",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 15,
+   "player": "cajunb",
+   "country": "🇩🇰",
+   "team": "Team SoloMid"
+  },
+  {
+   "rank": 16,
+   "player": "f0rest",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 17,
+   "player": "NEO",
+   "country": "🇵🇱",
+   "team": "Virtus.pro"
+  },
+  {
+   "rank": 18,
+   "player": "apEX",
+   "country": "🇫🇷",
+   "team": "Team EnVyUs"
+  },
+  {
+   "rank": 19,
+   "player": "allu",
+   "country": "🇫🇮",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 20,
+   "player": "Skadoodle",
+   "country": "🇺🇸",
+   "team": "Cloud9"
+  }
+ ],
+ "2016": [
+  {
+   "rank": 1,
+   "player": "coldzera",
+   "country": "🇧🇷",
+   "team": "SK Gaming"
+  },
+  {
+   "rank": 2,
+   "player": "FalleN",
+   "country": "🇧🇷",
+   "team": "SK Gaming"
+  },
+  {
+   "rank": 3,
+   "player": "dev1ce",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 4,
+   "player": "s1mple",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 5,
+   "player": "Snax",
+   "country": "🇵🇱",
+   "team": "Virtus.pro"
+  },
+  {
+   "rank": 6,
+   "player": "shox",
+   "country": "🇫🇷",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 7,
+   "player": "f0rest",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 8,
+   "player": "olofmeister",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 9,
+   "player": "ScreaM",
+   "country": "🇧🇪",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 10,
+   "player": "flusha",
+   "country": "🇸🇪",
+   "team": "GODSENT"
+  },
+  {
+   "rank": 11,
+   "player": "NiKo",
+   "country": "🇧🇦",
+   "team": "mousesports"
+  },
+  {
+   "rank": 12,
+   "player": "flamie",
+   "country": "🇷🇺",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 13,
+   "player": "kennyS",
+   "country": "🇫🇷",
+   "team": "Team EnVyUs"
+  },
+  {
+   "rank": 14,
+   "player": "Magisk",
+   "country": "🇩🇰",
+   "team": "Team Dignitas"
+  },
+  {
+   "rank": 15,
+   "player": "fer",
+   "country": "🇧🇷",
+   "team": "SK Gaming"
+  },
+  {
+   "rank": 16,
+   "player": "Kjaerbye",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 17,
+   "player": "GuardiaN",
+   "country": "🇸🇰",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 18,
+   "player": "GeT_RiGhT",
+   "country": "🇸🇪",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 19,
+   "player": "fnx",
+   "country": "🇧🇷",
+   "team": "SK Gaming"
+  },
+  {
+   "rank": 20,
+   "player": "dennis",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  }
+ ],
+ "2017": [
+  {
+   "rank": 1,
+   "player": "coldzera",
+   "country": "🇧🇷",
+   "team": "SK Gaming"
+  },
+  {
+   "rank": 2,
+   "player": "NiKo",
+   "country": "🇧🇦",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 3,
+   "player": "fer",
+   "country": "🇧🇷",
+   "team": "SK Gaming"
+  },
+  {
+   "rank": 4,
+   "player": "rain",
+   "country": "🇳🇴",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 5,
+   "player": "dev1ce",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 6,
+   "player": "FalleN",
+   "country": "🇧🇷",
+   "team": "SK Gaming"
+  },
+  {
+   "rank": 7,
+   "player": "kennyS",
+   "country": "🇫🇷",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 8,
+   "player": "s1mple",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 9,
+   "player": "GuardiaN",
+   "country": "🇸🇰",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 10,
+   "player": "dupreeh",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 11,
+   "player": "HObbit",
+   "country": "🇰🇿",
+   "team": "Gambit Esports"
+  },
+  {
+   "rank": 12,
+   "player": "EliGE",
+   "country": "🇺🇸",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 13,
+   "player": "Xyp9x",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 14,
+   "player": "k0nfig",
+   "country": "🇩🇰",
+   "team": "North"
+  },
+  {
+   "rank": 15,
+   "player": "Kjaerbye",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 16,
+   "player": "oskar",
+   "country": "🇨🇿",
+   "team": "mousesports"
+  },
+  {
+   "rank": 17,
+   "player": "AdreN",
+   "country": "🇰🇿",
+   "team": "Gambit Esports"
+  },
+  {
+   "rank": 18,
+   "player": "boltz",
+   "country": "🇧🇷",
+   "team": "SK Gaming"
+  },
+  {
+   "rank": 19,
+   "player": "olofmeister",
+   "country": "🇸🇪",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 20,
+   "player": "Snax",
+   "country": "🇵🇱",
+   "team": "Virtus.pro"
+  }
+ ],
+ "2018": [
+  {
+   "rank": 1,
+   "player": "s1mple",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 2,
+   "player": "dev1ce",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 3,
+   "player": "NiKo",
+   "country": "🇧🇦",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 4,
+   "player": "electronic",
+   "country": "🇷🇺",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 5,
+   "player": "dupreeh",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 6,
+   "player": "NAF",
+   "country": "🇨🇦",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 7,
+   "player": "Magisk",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 8,
+   "player": "gla1ve",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 9,
+   "player": "KRIMZ",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 10,
+   "player": "coldzera",
+   "country": "🇧🇷",
+   "team": "MIBR"
+  },
+  {
+   "rank": 11,
+   "player": "GuardiaN",
+   "country": "🇸🇰",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 12,
+   "player": "Twistzz",
+   "country": "🇨🇦",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 13,
+   "player": "Xyp9x",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 14,
+   "player": "oskar",
+   "country": "🇨🇿",
+   "team": "mousesports"
+  },
+  {
+   "rank": 15,
+   "player": "EliGE",
+   "country": "🇺🇸",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 16,
+   "player": "suNny",
+   "country": "🇫🇮",
+   "team": "mousesports"
+  },
+  {
+   "rank": 17,
+   "player": "autimatic",
+   "country": "🇺🇸",
+   "team": "Cloud9"
+  },
+  {
+   "rank": 18,
+   "player": "rain",
+   "country": "🇳🇴",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 19,
+   "player": "ropz",
+   "country": "🇪🇪",
+   "team": "mousesports"
+  },
+  {
+   "rank": 20,
+   "player": "valde",
+   "country": "🇩🇰",
+   "team": "North"
+  }
+ ],
+ "2019": [
+  {
+   "rank": 1,
+   "player": "ZywOo",
+   "country": "🇫🇷",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 2,
+   "player": "s1mple",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 3,
+   "player": "dev1ce",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 4,
+   "player": "EliGE",
+   "country": "🇺🇸",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 5,
+   "player": "Magisk",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 6,
+   "player": "electronic",
+   "country": "🇷🇺",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 7,
+   "player": "NAF",
+   "country": "🇨🇦",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 8,
+   "player": "Brehze",
+   "country": "🇺🇸",
+   "team": "Evil Geniuses"
+  },
+  {
+   "rank": 9,
+   "player": "Twistzz",
+   "country": "🇨🇦",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 10,
+   "player": "ropz",
+   "country": "🇪🇪",
+   "team": "mousesports"
+  },
+  {
+   "rank": 11,
+   "player": "NiKo",
+   "country": "🇧🇦",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 12,
+   "player": "woxic",
+   "country": "🇹🇷",
+   "team": "mousesports"
+  },
+  {
+   "rank": 13,
+   "player": "sergej",
+   "country": "🇫🇮",
+   "team": "ENCE"
+  },
+  {
+   "rank": 14,
+   "player": "Xyp9x",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 15,
+   "player": "jks",
+   "country": "🇦🇺",
+   "team": "100 Thieves"
+  },
+  {
+   "rank": 16,
+   "player": "dupreeh",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 17,
+   "player": "KRIMZ",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 18,
+   "player": "CeRq",
+   "country": "🇧🇬",
+   "team": "Evil Geniuses"
+  },
+  {
+   "rank": 19,
+   "player": "Brollan",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 20,
+   "player": "Ethan",
+   "country": "🇺🇸",
+   "team": "Evil Geniuses"
+  }
+ ],
+ "2020": [
+  {
+   "rank": 1,
+   "player": "ZywOo",
+   "country": "🇫🇷",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 2,
+   "player": "s1mple",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 3,
+   "player": "dev1ce",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 4,
+   "player": "NiKo",
+   "country": "🇧🇦",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 5,
+   "player": "electronic",
+   "country": "🇷🇺",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 6,
+   "player": "blameF",
+   "country": "🇩🇰",
+   "team": "Complexity Gaming"
+  },
+  {
+   "rank": 7,
+   "player": "ropz",
+   "country": "🇪🇪",
+   "team": "mousesports"
+  },
+  {
+   "rank": 8,
+   "player": "EliGE",
+   "country": "🇺🇸",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 9,
+   "player": "dupreeh",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 10,
+   "player": "syrsoN",
+   "country": "🇩🇪",
+   "team": "BIG"
+  },
+  {
+   "rank": 11,
+   "player": "Magisk",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 12,
+   "player": "stavn",
+   "country": "🇩🇰",
+   "team": "Heroic"
+  },
+  {
+   "rank": 13,
+   "player": "huNter-",
+   "country": "🇧🇦",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 14,
+   "player": "yuurih",
+   "country": "🇧🇷",
+   "team": "FURIA Esports"
+  },
+  {
+   "rank": 15,
+   "player": "Brollan",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 16,
+   "player": "HEN1",
+   "country": "🇧🇷",
+   "team": "FURIA Esports"
+  },
+  {
+   "rank": 17,
+   "player": "KRIMZ",
+   "country": "🇸🇪",
+   "team": "Fnatic"
+  },
+  {
+   "rank": 18,
+   "player": "KSCERATO",
+   "country": "🇧🇷",
+   "team": "FURIA Esports"
+  },
+  {
+   "rank": 19,
+   "player": "jks",
+   "country": "🇦🇺",
+   "team": "Complexity Gaming"
+  },
+  {
+   "rank": 20,
+   "player": "Brehze",
+   "country": "🇺🇸",
+   "team": "Evil Geniuses"
+  }
+ ],
+ "2021": [
+  {
+   "rank": 1,
+   "player": "s1mple",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 2,
+   "player": "ZywOo",
+   "country": "🇫🇷",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 3,
+   "player": "NiKo",
+   "country": "🇧🇦",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 4,
+   "player": "sh1ro",
+   "country": "🇷🇺",
+   "team": "Gambit Esports"
+  },
+  {
+   "rank": 5,
+   "player": "Ax1Le",
+   "country": "🇷🇺",
+   "team": "Gambit Esports"
+  },
+  {
+   "rank": 6,
+   "player": "HObbit",
+   "country": "🇰🇿",
+   "team": "Gambit Esports"
+  },
+  {
+   "rank": 7,
+   "player": "electroNic",
+   "country": "🇷🇺",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 8,
+   "player": "YEKINDAR",
+   "country": "🇱🇻",
+   "team": "Virtus.pro"
+  },
+  {
+   "rank": 9,
+   "player": "b1t",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 10,
+   "player": "Jame",
+   "country": "🇷🇺",
+   "team": "Virtus.pro"
+  },
+  {
+   "rank": 11,
+   "player": "dev1ce",
+   "country": "🇩🇰",
+   "team": "Ninjas in Pyjamas"
+  },
+  {
+   "rank": 12,
+   "player": "huNter-",
+   "country": "🇧🇦",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 13,
+   "player": "blameF",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 14,
+   "player": "NAF",
+   "country": "🇨🇦",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 15,
+   "player": "KSCERATO",
+   "country": "🇧🇷",
+   "team": "FURIA Esports"
+  },
+  {
+   "rank": 16,
+   "player": "stavn",
+   "country": "🇩🇰",
+   "team": "Heroic"
+  },
+  {
+   "rank": 17,
+   "player": "Twistzz",
+   "country": "🇨🇦",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 18,
+   "player": "ropz",
+   "country": "🇪🇪",
+   "team": "MOUZ"
+  },
+  {
+   "rank": 19,
+   "player": "EliGE",
+   "country": "🇺🇸",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 20,
+   "player": "broky",
+   "country": "🇱🇻",
+   "team": "FaZe Clan"
+  }
+ ],
+ "2022": [
+  {
+   "rank": 1,
+   "player": "s1mple",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 2,
+   "player": "ZywOo",
+   "country": "🇫🇷",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 3,
+   "player": "sh1ro",
+   "country": "🇷🇺",
+   "team": "Cloud9"
+  },
+  {
+   "rank": 4,
+   "player": "Ax1Le",
+   "country": "🇷🇺",
+   "team": "Cloud9"
+  },
+  {
+   "rank": 5,
+   "player": "NiKo",
+   "country": "🇧🇦",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 6,
+   "player": "broky",
+   "country": "🇱🇻",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 7,
+   "player": "m0NESY",
+   "country": "🇷🇺",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 8,
+   "player": "ropz",
+   "country": "🇪🇪",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 9,
+   "player": "KSCERATO",
+   "country": "🇧🇷",
+   "team": "FURIA Esports"
+  },
+  {
+   "rank": 10,
+   "player": "stavn",
+   "country": "🇩🇰",
+   "team": "Heroic"
+  },
+  {
+   "rank": 11,
+   "player": "Twistzz",
+   "country": "🇨🇦",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 12,
+   "player": "blameF",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 13,
+   "player": "rain",
+   "country": "🇳🇴",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 14,
+   "player": "huNter-",
+   "country": "🇧🇦",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 15,
+   "player": "YEKINDAR",
+   "country": "🇱🇻",
+   "team": "Team Liquid"
+  },
+  {
+   "rank": 16,
+   "player": "b1t",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 17,
+   "player": "frozen",
+   "country": "🇸🇰",
+   "team": "MOUZ"
+  },
+  {
+   "rank": 18,
+   "player": "Spinx",
+   "country": "🇮🇱",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 19,
+   "player": "yuurih",
+   "country": "🇧🇷",
+   "team": "FURIA Esports"
+  },
+  {
+   "rank": 20,
+   "player": "Jame",
+   "country": "🇷🇺",
+   "team": "Outsiders"
+  }
+ ],
+ "2023": [
+  {
+   "rank": 1,
+   "player": "ZywOo",
+   "country": "🇫🇷",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 2,
+   "player": "NiKo",
+   "country": "🇧🇦",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 3,
+   "player": "ropz",
+   "country": "🇪🇪",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 4,
+   "player": "m0NESY",
+   "country": "🇷🇺",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 5,
+   "player": "Spinx",
+   "country": "🇮🇱",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 6,
+   "player": "SunPayus",
+   "country": "🇪🇦",
+   "team": "ENCE"
+  },
+  {
+   "rank": 7,
+   "player": "s1mple",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 8,
+   "player": "sh1ro",
+   "country": "🇷🇺",
+   "team": "Cloud9"
+  },
+  {
+   "rank": 9,
+   "player": "stavn",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 10,
+   "player": "broky",
+   "country": "🇱🇻",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 11,
+   "player": "dev1ce",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 12,
+   "player": "frozen",
+   "country": "🇸🇰",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 13,
+   "player": "huNter-",
+   "country": "🇧🇦",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 14,
+   "player": "NertZ",
+   "country": "🇮🇱",
+   "team": "ENCE"
+  },
+  {
+   "rank": 15,
+   "player": "jabbi",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 16,
+   "player": "blameF",
+   "country": "🇩🇰",
+   "team": "Astralis"
+  },
+  {
+   "rank": 17,
+   "player": "Magisk",
+   "country": "🇩🇰",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 18,
+   "player": "cadiaN",
+   "country": "🇩🇰",
+   "team": "Heroic"
+  },
+  {
+   "rank": 19,
+   "player": "KSCERATO",
+   "country": "🇧🇷",
+   "team": "FURIA Esports"
+  },
+  {
+   "rank": 20,
+   "player": "Twistzz",
+   "country": "🇨🇦",
+   "team": "FaZe Clan"
+  }
+ ],
+ "2024": [
+  {
+   "rank": 1,
+   "player": "donk",
+   "country": "🇷🇺",
+   "team": "Team Spirit"
+  },
+  {
+   "rank": 2,
+   "player": "m0NESY",
+   "country": "🇷🇺",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 3,
+   "player": "ZywOo",
+   "country": "🇫🇷",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 4,
+   "player": "NiKo",
+   "country": "🇧🇦",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 5,
+   "player": "jL",
+   "country": "🇱🇹",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 6,
+   "player": "sh1ro",
+   "country": "🇷🇺",
+   "team": "Team Spirit"
+  },
+  {
+   "rank": 7,
+   "player": "flameZ",
+   "country": "🇮🇱",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 8,
+   "player": "broky",
+   "country": "🇱🇻",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 9,
+   "player": "b1t",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 10,
+   "player": "frozen",
+   "country": "🇸🇰",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 11,
+   "player": "w0nderful",
+   "country": "🇺🇦",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 12,
+   "player": "malbsMd",
+   "country": "🇬🇹",
+   "team": "G2 Esports"
+  },
+  {
+   "rank": 13,
+   "player": "Spinx",
+   "country": "🇮🇱",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 14,
+   "player": "xertioN",
+   "country": "🇮🇱",
+   "team": "MOUZ"
+  },
+  {
+   "rank": 15,
+   "player": "XANTARES",
+   "country": "🇹🇷",
+   "team": "Eternal Fire"
+  },
+  {
+   "rank": 16,
+   "player": "iM",
+   "country": "🇷🇴",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 17,
+   "player": "Jimpphat",
+   "country": "🇫🇮",
+   "team": "MOUZ"
+  },
+  {
+   "rank": 18,
+   "player": "ropz",
+   "country": "🇪🇪",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 19,
+   "player": "EliGE",
+   "country": "🇺🇸",
+   "team": "Complexity Gaming"
+  },
+  {
+   "rank": 20,
+   "player": "torzsi",
+   "country": "🇭🇺",
+   "team": "MOUZ"
+  }
+ ],
+ "2025": [
+  {
+   "rank": 1,
+   "player": "ZywOo",
+   "country": "",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 2,
+   "player": "donk",
+   "country": "",
+   "team": "Team Spirit"
+  },
+  {
+   "rank": 3,
+   "player": "ropz",
+   "country": "",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 4,
+   "player": "m0NESY",
+   "country": "",
+   "team": "Team Falcons"
+  },
+  {
+   "rank": 5,
+   "player": "sh1ro",
+   "country": "",
+   "team": "Team Spirit"
+  },
+  {
+   "rank": 6,
+   "player": "molodoy",
+   "country": "",
+   "team": "FURIA"
+  },
+  {
+   "rank": 7,
+   "player": "flameZ",
+   "country": "",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 8,
+   "player": "frozen",
+   "country": "",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 9,
+   "player": "KSCERATO",
+   "country": "",
+   "team": "FURIA"
+  },
+  {
+   "rank": 10,
+   "player": "Spinx",
+   "country": "",
+   "team": "MOUZ"
+  },
+  {
+   "rank": 11,
+   "player": "Twistzz",
+   "country": "",
+   "team": "FaZe Clan"
+  },
+  {
+   "rank": 12,
+   "player": "mezii",
+   "country": "",
+   "team": "Team Vitality"
+  },
+  {
+   "rank": 13,
+   "player": "Senzu",
+   "country": "",
+   "team": "The MongolZ"
+  },
+  {
+   "rank": 14,
+   "player": "XANTARES",
+   "country": "",
+   "team": "Aurora Gaming"
+  },
+  {
+   "rank": 15,
+   "player": "YEKINDAR",
+   "country": "",
+   "team": "FURIA"
+  },
+  {
+   "rank": 16,
+   "player": "xertioN",
+   "country": "",
+   "team": "MOUZ"
+  },
+  {
+   "rank": 17,
+   "player": "torzsi",
+   "country": "",
+   "team": "MOUZ"
+  },
+  {
+   "rank": 18,
+   "player": "NiKo",
+   "country": "",
+   "team": "Team Falcons"
+  },
+  {
+   "rank": 19,
+   "player": "iM",
+   "country": "",
+   "team": "Natus Vincere"
+  },
+  {
+   "rank": 20,
+   "player": "b1t",
+   "country": "",
+   "team": "Natus Vincere"
+  }
+ ]
+}

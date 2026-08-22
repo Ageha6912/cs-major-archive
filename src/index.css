@@ -106,29 +106,29 @@ a {
   min-height: 100vh;
 }
 
-.beams-bg {
+.bg-fx {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
 }
 
-.beams-bg canvas {
+.bg-fx canvas {
   width: 100% !important;
   height: 100% !important;
   display: block;
   pointer-events: none;
 }
 
-.beams-bg__veil {
+.bg-fx__veil {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(10, 10, 13, 0.34) 0%,
-    rgba(10, 10, 13, 0.18) 24%,
-    rgba(10, 10, 13, 0.28) 78%,
-    rgba(10, 10, 13, 0.55) 100%
+    rgba(10, 10, 13, 0.22) 0%,
+    rgba(10, 10, 13, 0.12) 24%,
+    rgba(10, 10, 13, 0.22) 78%,
+    rgba(10, 10, 13, 0.45) 100%
   );
 }
 

@@ -8,7 +8,7 @@ import Top20Section from './components/Top20Section'
 import { majors } from './data'
 import { useReveal, useScrollProgress } from './hooks'
 
-const Beams = lazy(() => import('./components/Beams'))
+const SideRays = lazy(() => import('./components/SideRays'))
 
 function BackToTop() {
   const [show, setShow] = useState(false)
@@ -42,25 +42,21 @@ export default function App() {
 
   return (
     <div className="shell">
-      <Suspense fallback={<div className="beams-bg" aria-hidden="true" />}>
-        <div className="beams-bg" aria-hidden="true">
-          <Beams
-            beamWidth={1.7}
-            beamHeight={16}
-            beamNumber={10}
-            lightColor="#e7c87c"
-            speed={
-              typeof window !== 'undefined' &&
-              window.matchMedia('(prefers-reduced-motion: reduce)').matches
-                ? 0
-                : 1.8
-            }
-            noiseIntensity={1.4}
-            scale={0.22}
-            rotation={0}
-            sideLights
+      <Suspense fallback={<div className="bg-fx" aria-hidden="true" />}>
+        <div className="bg-fx" aria-hidden="true">
+          <SideRays
+            speed={2}
+            rayColor1="#d8b45c"
+            rayColor2="#96c8ff"
+            intensity={2.2}
+            spread={2.2}
+            origin="top-right"
+            saturation={1.4}
+            blend={0.72}
+            falloff={1.5}
+            opacity={1}
           />
-          <div className="beams-bg__veil" />
+          <div className="bg-fx__veil" />
         </div>
       </Suspense>
       <div className={`app${detailId ? ' is-hidden' : ''}`}>

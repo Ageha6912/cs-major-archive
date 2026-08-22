@@ -14,7 +14,7 @@
 ## 设计
 
 - 暗色年鉴风格：炭黑底 + 香槟金（CS:GO 时代）/ 电光青（CS2 时代）双色体系，Bebas Neue 大标题与 Oswald 标题字（已本地打包，离线可用）。
-- 全页固定背景使用 React Bits 的 Beams 光柱动效（Three.js 着色器，按需加载独立 chunk，支持 `prefers-reduced-motion` 降速；打开详情页时主内容自动隐藏，光柱仍透出）。
+- 全页固定背景使用 React Bits 的 SideRays 角落放射光柱动效（ogl 着色器，按需加载独立 chunk，香槟金 + 冷蓝双色层；打开详情页时主内容自动隐藏，光效仍透出）。
 - 战队徽章：16 支冠军战队使用真实 Logo（本地 `public/logos/`，来源 Wikimedia / Liquipedia），其余战队自动回退为六边形字母徽章。
 - 动效克制：滚动渐显、数字滚动、冠军卡悬停、顶部滚动进度条与标题走马灯；适配 `prefers-reduced-motion`。
 - 移动端：冠军长廊横向滑动、时间轴单列、详情页纵向堆叠。

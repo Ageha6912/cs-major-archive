@@ -614,7 +614,6 @@ a {
   gap: 18px;
   overflow-x: auto;
   padding: 12px 4px 18px;
-  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -626,7 +625,6 @@ a {
 .hall-card {
   --team-color: #d1d5db;
   flex: 0 0 270px;
-  scroll-snap-align: start;
   position: relative;
   display: flex;
   flex-direction: column;

@@ -27,6 +27,7 @@ dist-ssr
 shots/
 
 # Research corpus & intermediate data
+design-md/
 data/wiki/
 data/parsed/
 data/parsed_review.txt

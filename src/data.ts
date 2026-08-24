@@ -2,6 +2,7 @@ import majorsJson from './data/majors.json'
 import finalMapsJson from './data/final_maps.json'
 import top20Json from './data/top20.json'
 import videosJson from './data/videos.json'
+import matchStatsJson from './data/matchStats.json'
 
 export interface TeamEntry {
   team: string
@@ -42,10 +43,32 @@ export interface VideoEntry {
   author: string
 }
 
+export interface PlayerMatchStat {
+  player: string
+  real: string
+  img?: string
+  k: number
+  d: number
+  diff: number
+  swing: string | null
+  adr: number | null
+  kast: number | null
+  rating: number | null
+}
+
+export interface MatchStatsEntry {
+  source: string | null
+  matchUrl?: string
+  stats: Record<string, PlayerMatchStat[]>
+  maps: { map: string; teams: Record<string, PlayerMatchStat[]> }[]
+  h2h?: { wins: number[]; overtimes: number }
+}
+
 export const majors = majorsJson as Major[]
 export const finalMaps = finalMapsJson as Record<string, { map: string; scores: number[] }[]>
 export const top20 = top20Json as Record<string, Top20Entry[]>
 export const videos = videosJson as Record<string, VideoEntry[]>
+export const matchStats = matchStatsJson as Record<string, MatchStatsEntry>
 
 export const majorById = new Map(majors.map((m) => [m.id, m]))
 

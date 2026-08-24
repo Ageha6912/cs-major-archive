@@ -63,13 +63,6 @@
  ],
  "dhw2014": [
   {
-   "map": "Overpass",
-   "scores": [
-    16,
-    13
-   ]
-  },
-  {
    "map": "Dust II",
    "scores": [
     16,
@@ -80,6 +73,13 @@
    "map": "Inferno",
    "scores": [
     4,
+    16
+   ]
+  },
+  {
+   "map": "Overpass",
+   "scores": [
+    19,
     16
    ]
   }
@@ -124,13 +124,6 @@
   }
  ],
  "cluj2015": [
-  {
-   "map": "Mirage",
-   "scores": [
-    16,
-    9
-   ]
-  },
   {
    "map": "Train",
    "scores": [
@@ -180,24 +173,24 @@
  ],
  "atlanta2017": [
   {
-   "map": "Overpass",
+   "map": "Nuke",
    "scores": [
-    16,
-    7
-   ]
-  },
-  {
-   "map": "Mirage",
-   "scores": [
-    14,
+    12,
     16
    ]
   },
   {
-   "map": "Dust II",
+   "map": "Overpass",
    "scores": [
     16,
-    10
+    14
+   ]
+  },
+  {
+   "map": "Train",
+   "scores": [
+    16,
+    14
    ]
   }
  ],

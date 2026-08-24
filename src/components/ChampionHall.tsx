@@ -112,7 +112,7 @@ export default function ChampionHall({
 }) {
   const shelfRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
-  const list = eraFilter === 'all' ? majors : majors.filter((m) => m.era === eraFilter)
+  const list = (eraFilter === 'all' ? majors : majors.filter((m) => m.era === eraFilter)).slice().reverse()
 
   useEffect(() => {
     const el = shelfRef.current
@@ -139,7 +139,7 @@ export default function ChampionHall({
         <p className="section-head__kicker">CHAMPIONS HALL</p>
         <h2 className="section-head__title">冠军殿堂</h2>
         <p className="section-head__desc">
-          从 2013 年延雪平的初代冠军，到 2026 年科隆的新王——每一届的冠军、决赛与四强都在这里列队。
+          从 2026 年科隆的新王，回溯到 2013 年延雪平的初代冠军——每一届的冠军、决赛与四强都在这里列队。
         </p>
       </div>
       <div className="hall__shelf" ref={shelfRef} onScroll={onScroll} data-reveal>

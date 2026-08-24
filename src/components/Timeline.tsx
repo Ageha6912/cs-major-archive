@@ -65,7 +65,7 @@ export default function Timeline({
                 </header>
                 <div className="tl__duel">
                   <div className="tl__team">
-                    <TeamBadge team={m.champion.team} size={40} />
+                    <TeamBadge team={m.champion.team} size={34} />
                     <div>
                       <b className="tl__champ">冠军</b>
                       <span>{m.champion.team}</span>
@@ -76,7 +76,7 @@ export default function Timeline({
                     <span>MVP {m.mvp}</span>
                   </div>
                   <div className="tl__team tl__team--runner">
-                    <TeamBadge team={m.runnerUp.team} size={40} />
+                    <TeamBadge team={m.runnerUp.team} size={34} />
                     <div>
                       <b>亚军</b>
                       <span>{m.runnerUp.team}</span>

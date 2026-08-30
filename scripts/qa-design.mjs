@@ -1,0 +1,66 @@
+import { chromium } from 'playwright-core'
+
+const EXE = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
+const URL = 'http://127.0.0.1:5199/'
+const browser = await chromium.launch({ executablePath: EXE, headless: true })
+const errors = []
+const desktopPage = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+desktopPage.on('pageerror', (error) => errors.push(`desktop: ${error.message}`))
+desktopPage.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()) })
+await desktopPage.route('**/assets/*.js', async (route) => {
+  await new Promise((resolve) => setTimeout(resolve, 900))
+  return route.continue()
+})
+const navigation = desktopPage.goto(URL, { waitUntil: 'networkidle' })
+await desktopPage.waitForSelector('.page-skeleton', { state: 'visible' })
+await desktopPage.screenshot({ path: 'shots/qa-skeleton.png' })
+await navigation
+await desktopPage.waitForTimeout(1600)
+await desktopPage.screenshot({ path: 'shots/qa-desktop-hero.png' })
+await desktopPage.evaluate(() => document.getElementById('hall')?.scrollIntoView())
+await desktopPage.waitForTimeout(1200)
+await desktopPage.screenshot({ path: 'shots/qa-desktop-hall.png' })
+await desktopPage.evaluate(() => document.getElementById('timeline')?.scrollIntoView())
+await desktopPage.waitForTimeout(1200)
+await desktopPage.screenshot({ path: 'shots/qa-desktop-timeline.png' })
+await desktopPage.evaluate(() => document.getElementById('top20')?.scrollIntoView())
+await desktopPage.waitForTimeout(1200)
+await desktopPage.screenshot({ path: 'shots/qa-desktop-top20.png' })
+await desktopPage.evaluate(() => document.getElementById('hof')?.scrollIntoView())
+await desktopPage.waitForTimeout(1200)
+await desktopPage.screenshot({ path: 'shots/qa-desktop-hof.png' })
+await desktopPage.locator('.hof-row__main').first().click()
+await desktopPage.waitForTimeout(600)
+await desktopPage.screenshot({ path: 'shots/qa-desktop-hof-open.png' })
+
+const detailCard = desktopPage.locator('.hall-card', { hasText: '布达佩斯' }).first()
+await detailCard.scrollIntoViewIfNeeded()
+await detailCard.click()
+await desktopPage.waitForSelector('.detail', { state: 'visible' })
+await desktopPage.waitForTimeout(1200)
+await desktopPage.screenshot({ path: 'shots/qa-desktop-detail-hero.png' })
+const top20Chips = desktopPage.locator('.detail__top20')
+if (await top20Chips.count()) {
+  await top20Chips.scrollIntoViewIfNeeded()
+  await desktopPage.waitForTimeout(400)
+  await desktopPage.screenshot({ path: 'shots/qa-desktop-detail-top20.png' })
+}
+await desktopPage.keyboard.press('Escape')
+await desktopPage.waitForTimeout(600)
+
+const mobilePage = await browser.newPage({ viewport: { width: 390, height: 844 } })
+mobilePage.on('pageerror', (error) => errors.push(`mobile: ${error.message}`))
+mobilePage.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()) })
+await mobilePage.goto(URL, { waitUntil: 'networkidle' })
+await mobilePage.waitForTimeout(1500)
+await mobilePage.screenshot({ path: 'shots/qa-mobile-hero.png' })
+await mobilePage.evaluate(() => document.getElementById('top20')?.scrollIntoView())
+await mobilePage.waitForTimeout(1200)
+await mobilePage.screenshot({ path: 'shots/qa-mobile-top20.png' })
+await mobilePage.evaluate(() => document.getElementById('hof')?.scrollIntoView())
+await mobilePage.waitForTimeout(1200)
+await mobilePage.screenshot({ path: 'shots/qa-mobile-hof.png' })
+
+console.log('avatars:', await desktopPage.locator('.player-avatar').count(), 'dials:', await desktopPage.locator('.tl__dial').count(), 'errors:', errors.length)
+if (errors.length) console.log(errors.slice(0, 5).join('\n'))
+await browser.close()

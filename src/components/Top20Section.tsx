@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { top20 } from '../data'
 import type { Top20Entry } from '../data'
+import PlayerAvatar from './PlayerAvatar'
 
 const YEARS = Object.keys(top20).sort()
 
 function PodiumCard({ e, tier }: { e: Top20Entry; tier: string }) {
   return (
     <div className={`top20-podium__card top20-podium__card--${tier}`} data-reveal>
-      <span className="top20-podium__rank">
-        {e.rank === 1 ? 'NO.1' : `#${e.rank}`}
-      </span>
+      <PlayerAvatar name={e.player} size={92} />
+      <span className="top20-podium__rank">{e.rank === 1 ? 'NO.1' : `#${e.rank}`}</span>
       <span className="top20-podium__player">{e.player}</span>
       <span className="top20-podium__meta">
         <span>{e.country}</span>
@@ -34,11 +34,7 @@ export default function Top20Section() {
       </div>
       <div className="top20__years" data-reveal>
         {YEARS.map((y) => (
-          <button
-            key={y}
-            className={`top20__year ${y === year ? 'is-active' : ''}`}
-            onClick={() => setYear(y)}
-          >
+          <button key={y} className={`top20__year ${y === year ? 'is-active' : ''}`} onClick={() => setYear(y)}>
             {y}
           </button>
         ))}
@@ -53,6 +49,7 @@ export default function Top20Section() {
           <li key={e.rank} className="top20-row">
             <span className="top20-row__rank">{e.rank}</span>
             <span className="top20-row__flag">{e.country}</span>
+            <PlayerAvatar name={e.player} size={30} />
             <span className="top20-row__player">{e.player}</span>
             <span className="top20-row__team">{e.team}</span>
           </li>

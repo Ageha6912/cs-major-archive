@@ -36,6 +36,11 @@ export default function App() {
   const progress = useScrollProgress()
   useReveal()
 
+  useEffect(() => {
+    const ready = requestAnimationFrame(() => document.documentElement.setAttribute('data-page-ready', 'true'))
+    return () => cancelAnimationFrame(ready)
+  }, [])
+
   const scrollToHall = () => {
     document.getElementById('hall')?.scrollIntoView({ behavior: 'smooth' })
   }

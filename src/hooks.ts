@@ -4,19 +4,24 @@ import { useEffect, useRef, useState } from 'react'
 export function useReveal() {
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'))
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            ;(entry.target as HTMLElement).classList.add('is-in')
-            io.unobserve(entry.target)
-          }
-        }
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
+    const reveal = (entry: IntersectionObserverEntry) => {
+      if (entry.isIntersecting) {
+        ;(entry.target as HTMLElement).classList.add('is-in')
+        io.unobserve(entry.target)
+        tallIo.unobserve(entry.target)
+      }
+    }
+    const options = { rootMargin: '0px 0px -40px 0px' } as const
+    const io = new IntersectionObserver((entries) => entries.forEach(reveal), { ...options, threshold: 0.12 })
+    // Elements taller than the viewport can never reach a 0.12 ratio; reveal them on first intersection.
+    const tallIo = new IntersectionObserver((entries) => entries.forEach(reveal), { ...options, threshold: 0 })
+    els.forEach((el) =>
+      (el.getBoundingClientRect().height > window.innerHeight * 0.6 ? tallIo : io).observe(el),
     )
-    els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
+    return () => {
+      io.disconnect()
+      tallIo.disconnect()
+    }
   }, [])
 }
 

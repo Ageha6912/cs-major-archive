@@ -1,13 +1,28 @@
 import { useState } from 'react'
-import { finalMapsOf, formatPurse, videosOf } from '../data'
+import { finalMapsOf, formatPurse, videosOf, visualPeriod } from '../data'
 import type { Major } from '../data'
 import TeamBadge from './TeamBadge'
+
+function MapsDial() {
+  return (
+    <span className="tl__dial" aria-hidden="true">
+      <svg viewBox="0 0 52 30" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <path d="M4 25a22 22 0 0 1 44 0" />
+        <path d="M26 25V3" />
+        <circle cx="26" cy="25" r="3" fill="currentColor" stroke="none" />
+        <path d="M12 19c5-6 12-8 28-7" />
+      </svg>
+    </span>
+  )
+}
 
 function MapsSummary({ major }: { major: Major }) {
   const maps = finalMapsOf(major)
   if (maps.length === 0) return null
+
   return (
     <div className="tl__maps">
+      <MapsDial />
       {maps.map((mp) => (
         <span className="tl__map" key={mp.map + mp.scores.join('-')}>
           <i>{mp.map}</i>
@@ -44,7 +59,7 @@ export default function Timeline({
           const fresh = expanded && i >= COLLAPSED_COUNT
           return (
             <article
-              className={`tl__item era-${m.era === 'CS2' ? 'cs2' : 'csgo'}${fresh ? ' tl__item--fresh' : ''}`}
+              className={`tl__item period-${visualPeriod(m.year)} era-${m.era === 'CS2' ? 'cs2' : 'csgo'}${fresh ? ' tl__item--fresh' : ''}`}
               key={m.id}
               {...(fresh ? {} : { 'data-reveal': '' })}
               style={{ ['--i' as string]: i }}

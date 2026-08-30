@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { hallOfFame, top20 } from '../data'
 import type { HoFEntry } from '../data'
+import PlayerAvatar from './PlayerAvatar'
 
 type SortKey = 'appearances' | 'top10s' | 'numberOnes' | 'best'
 
@@ -23,6 +24,7 @@ function HoFRow({ entry, index }: { entry: HoFEntry; index: number }) {
     <li className={`hof-row ${tier ? `hof-row--${tier}` : ''}`}>
       <button className="hof-row__main" onClick={() => setOpen((v) => !v)}>
         <span className="hof-row__no">{index + 1}</span>
+        <PlayerAvatar name={entry.player} size={30} />
         <span className="hof-row__name">{entry.player}</span>
         <span className="hof-row__stat">
           <b>{entry.appearances}</b>次上榜

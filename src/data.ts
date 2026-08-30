@@ -72,6 +72,27 @@ export const matchStats = matchStatsJson as Record<string, MatchStatsEntry>
 
 export const majorById = new Map(majors.map((m) => [m.id, m]))
 
+const PLAYER_AVATARS = new Map<string, string>()
+for (const entry of Object.values(matchStats)) {
+  const upsert = (players: PlayerMatchStat[]) => {
+    for (const player of players) {
+      if (player.img && !PLAYER_AVATARS.has(player.player)) PLAYER_AVATARS.set(player.player, player.img)
+    }
+  }
+  for (const players of Object.values(entry.stats)) upsert(players)
+  for (const map of entry.maps) for (const players of Object.values(map.teams)) upsert(players)
+}
+
+export function playerImage(name: string): string | undefined {
+  return PLAYER_AVATARS.get(name)
+}
+
+export function visualPeriod(year: number): 'heritage' | 'expansion' | 'contemporary' | 'current' {
+  if (year <= 2015) return 'heritage'
+  if (year <= 2019) return 'expansion'
+  if (year <= 2024) return 'contemporary'
+  return 'current'
+}
 /** Real team logos bundled in /public/logos; teams without one fall back to monograms. */
 export const TEAM_LOGOS: Record<string, string> = {
   Astralis: '/logos/astralis.svg',

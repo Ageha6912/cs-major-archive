@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { CITY_ZH, ORGANIZERS, teamColor } from '../data'
+import { CITY_ZH, ORGANIZERS, teamColor, visualPeriod } from '../data'
 import type { Major } from '../data'
 import TeamLogo from './TeamLogo'
 
@@ -20,7 +20,7 @@ function HallCard({ major, onSelect }: { major: Major; onSelect: (id: string) =>
       whileHover={{ y: -8, scale: 1.01 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
       onClick={() => onSelect(major.id)}
-      className={`hall-card era-${major.era === 'CS2' ? 'cs2' : 'csgo'}`}
+      className={`hall-card era-${major.era === 'CS2' ? 'cs2' : 'csgo'} period-${visualPeriod(major.year)}`}
       style={{ ['--team-color' as string]: color }}
     >
       {/* 顶部环境光晕 */}

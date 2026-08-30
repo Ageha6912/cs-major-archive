@@ -11,6 +11,7 @@ import {
 } from '../data'
 import type { Major, PlayerMatchStat } from '../data'
 import { useLockBody, useOnKey } from '../hooks'
+import PlayerAvatar from './PlayerAvatar'
 import TeamBadge from './TeamBadge'
 
 function ScoreBar({ label, score, max, side }: { label: string; score: number; max: number; side: 'c' | 'r' }) {
@@ -390,6 +391,7 @@ export default function MajorDetail({
               {inTop20.map((e) => (
                 <span className="chip chip--gold" key={e.player}>
                   <b>#{e.rank}</b>
+                  <PlayerAvatar name={e.player} size={22} />
                   {e.player}
                 </span>
               ))}

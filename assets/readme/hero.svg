@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560" role="img" aria-label="CS MAJOR ARCHIVE — 2013—2026 二十四届 Major 冠军档案">
+  <title>CS MAJOR ARCHIVE —— 2013—2026 二十四届 Major 冠军档案</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#101116"/>
+      <stop offset="1" stop-color="#0b0c10"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#b4b8c4"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f1d896"/>
+      <stop offset="1" stop-color="#d0a44e"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a8eef7"/>
+      <stop offset="1" stop-color="#5bd2e6"/>
+    </linearGradient>
+    <radialGradient id="glowGold" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#d8b45c" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#d8b45c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowCyan" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#5bd2e6" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#5bd2e6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#ffffff" stroke-opacity="0.028" stroke-width="1"/>
+    </pattern>
+    <clipPath id="card">
+      <rect x="0" y="0" width="1200" height="560" rx="16"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#card)">
+    <rect width="1200" height="560" fill="url(#bg)"/>
+    <rect width="1200" height="560" fill="url(#grid)"/>
+    <ellipse cx="150" cy="60" rx="420" ry="240" fill="url(#glowGold)"/>
+    <ellipse cx="1120" cy="560" rx="380" ry="220" fill="url(#glowCyan)"/>
+    <!-- corner light beams, echoing the site's SideRays backdrop -->
+    <g transform="rotate(33 1200 0)">
+      <rect x="1128" y="-40" width="64" height="760" fill="#d8b45c" opacity="0.055"/>
+      <rect x="1230" y="-40" width="150" height="760" fill="#d8b45c" opacity="0.04"/>
+      <rect x="1430" y="-40" width="30" height="760" fill="#d8b45c" opacity="0.07"/>
+      <rect x="1510" y="-40" width="110" height="760" fill="#5bd2e6" opacity="0.045"/>
+    </g>
+    <rect width="1200" height="4" fill="url(#gold)"/>
+
+    <!-- ======== left column ======== -->
+    <text x="72" y="76" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" font-weight="600" letter-spacing="3.4" fill="#b9b4a8">COUNTER-STRIKE MAJOR CHAMPIONSHIP ARCHIVE</text>
+
+    <text x="66" y="188" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="118" font-weight="700" fill="url(#silver)" textLength="546" lengthAdjust="spacingAndGlyphs">CS MAJOR</text>
+    <text x="66" y="298" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="118" font-weight="700" fill="url(#gold)" textLength="546" lengthAdjust="spacingAndGlyphs">ARCHIVE</text>
+
+    <text x="72" y="344" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="20" fill="#cdd1d8">2013 — 2026 · 二十四届冠军之路 · CS:GO 与 CS2 全部历史</text>
+
+    <!-- era strip: 24 majors, gold = CS:GO era, cyan = CS2 era -->
+    <text x="72" y="382" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14" font-weight="600" letter-spacing="1" fill="#d8b45c">CS:GO 时代 · 19 届</text>
+    <text x="523" y="382" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="14" font-weight="600" letter-spacing="1" fill="#5bd2e6">CS2 时代 · 5 届</text>
+    <g>
+      <rect x="72"    y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="95.75" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="119.5" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="143.25" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="167"   y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="190.75" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="214.5" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="238.25" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="262"   y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="285.75" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="309.5" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="333.25" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="357"   y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="380.75" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="404.5" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="428.25" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="452"   y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="475.75" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="499.5" y="392" width="21.75" height="16" rx="3" fill="#c8a559"/>
+      <rect x="523.25" y="392" width="21.75" height="16" rx="3" fill="#5bd2e6"/>
+      <rect x="547"   y="392" width="21.75" height="16" rx="3" fill="#5bd2e6"/>
+      <rect x="570.75" y="392" width="21.75" height="16" rx="3" fill="#5bd2e6"/>
+      <rect x="594.5" y="392" width="21.75" height="16" rx="3" fill="#5bd2e6"/>
+      <rect x="618.25" y="392" width="21.75" height="16" rx="3" fill="#a8eef7"/>
+    </g>
+    <text x="72" y="428" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#8b8794">2013</text>
+    <text x="534" y="428" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" fill="#8b8794">2024</text>
+    <text x="640" y="428" text-anchor="end" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" font-weight="700" fill="#a8eef7">2026</text>
+
+    <!-- key stats -->
+    <g font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="46" fill="#e9c87a" text-anchor="start">
+      <text x="72"  y="498">24</text>
+      <text x="226" y="498">16</text>
+      <text x="380" y="498">13</text>
+      <text x="540" y="498">19</text>
+    </g>
+    <g font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15" fill="#9895a1">
+      <text x="72"  y="522">届 Major</text>
+      <text x="226" y="522">支冠军战队</text>
+      <text x="380" y="522">年 HLTV TOP20</text>
+      <text x="540" y="522">座主办城市</text>
+    </g>
+
+    <!-- ======== champion club panel ======== -->
+    <rect x="676" y="80" width="452" height="424" rx="16" fill="#14151b" stroke="#2a2b33"/>
+    <text x="708" y="120" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="13" font-weight="700" letter-spacing="3" fill="#d8b45c">CHAMPION CLUB</text>
+    <text x="708" y="152" font-family="'Segoe UI','PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif" font-size="26" font-weight="700" fill="#ece9e2">冠军俱乐部</text>
+
+    <!-- Astralis ×4 -->
+    <path d="M730 187 l19.9 11.5 v23 l-19.9 11.5 l-19.9 -11.5 v-23 Z" fill="#ece9e2"/>
+    <svg x="717" y="194.2" width="26" height="31.6" viewBox="0 0 430 522"><path d="m215.01 0c-32.562 98.4-64.11 197.15-96.35 295.66l-118.66.662c46.44 33.06 100.74 74.11 155.32 112.66l-36.75 113.02h.664l310.76-225.83v-.539l-118.66.025c-32.29-98.5-63.889-197.23-96.33-295.66m-.311 226.72l23.07 68.861 73.56.084-59.3 43.14 22.553 70.3-59.29-43.39-59.977 43.27 23.01-69.86-59.668-43.46 73.56.113 22.48-69.06z" fill="#e60000"/></svg>
+    <text x="772" y="217" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="22" letter-spacing="1" fill="#ece9e2">ASTRALIS</text>
+    <text x="1096" y="219" text-anchor="end" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="26" fill="#e9c87a">×4</text>
+
+    <!-- Fnatic ×3 -->
+    <path d="M730 245 l19.9 11.5 v23 l-19.9 11.5 l-19.9 -11.5 v-23 Z" fill="#ece9e2"/>
+    <svg x="713" y="255.9" width="34" height="22.2" viewBox="0 0 3000 1960"><g fill="#ff5900"><path d="M1320 1520 l0 -430 180 0 180 0 0 225 0 226 -180 205 -180 205 0 -431z"/><path d="M290 1702 l0 -239 35 -25 c69 -49 185 -160 257 -246 150 -179 268 -389 344 -616 l44 -131 -30 -3 c-59 -6 -479 56 -621 93 -23 6 -38 -8 -168 -159 -78 -90 -143 -168 -144 -172 -3 -11 103 -37 333 -83 329 -66 584 -97 898 -108 l182 -6 0 94 c0 270 -82 591 -225 884 -152 312 -360 570 -630 780 -83 65 -251 175 -267 175 -4 0 -8 -107 -8 -238z"/><path d="M2588 1872 c-345 -228 -609 -529 -788 -897 -139 -284 -220 -608 -220 -874 l0 -94 183 6 c317 12 569 42 897 108 230 46 330 71 331 82 0 5 -64 83 -142 173 -115 134 -147 164 -163 160 -135 -32 -580 -99 -626 -94 l-30 3 44 131 c76 227 194 437 344 616 72 86 188 197 257 246 l35 25 0 239 c0 135 -4 238 -9 238 -5 0 -56 -31 -113 -68z"/></g></svg>
+    <text x="772" y="275" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="22" letter-spacing="1" fill="#ece9e2">FNATIC</text>
+    <text x="1096" y="277" text-anchor="end" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="26" fill="#e9c87a">×3</text>
+
+    <!-- Team Vitality ×3 -->
+    <path d="M730 303 l19.9 11.5 v23 l-19.9 11.5 l-19.9 -11.5 v-23 Z" fill="#ece9e2"/>
+    <svg x="718" y="311.4" width="24" height="29.2" viewBox="0 0 246.83 300"><g transform="scale(6.25) translate(-96,-13) translate(96,13)" fill="#0b0b0b"><path d="m9.0511 30.567 4.9122-8.7475-7.6466-21.82c-4.4203 1.194-8.7403 10.209-4.7212 17.789 1.9319 3.6394 7.4555 12.779 7.4555 12.779z"/><path d="m38.171 23.343h-.478l-4.488 4.616 1.884-3.154-3.594-2.352-3.544-5.71h-.953l.475 4.616 4.565 8.443c.62 1.03 1.5 2.6 1.5 2.6l1.045 1.62 3.588-.005 3.03-3.46 2.637-7.214z"/><path d="m30.67 22.3h-13.622l-1.798-2.886-4.059-1.28-3.917 4.231 1.156 4.883 6.091 3.199 8.868.005 6.647-3.552 2.634-4.6z"/><path d="m31.437 6.634-9.825 2.855 3.839 6.315 5.986 1.492 3.583-4.478z"/><path d="m29.865 5.989-.813-3.161-9.255.005-1.391 3.845 9.757 2.814z"/><path d="m17.384 6.613-9.913 2.861 3.917 4.478 5.986-1.497 3.833-6.315z"/><path d="m21.453 10.535-3.791 6.273 3.791 6.272h7.583l3.792-6.272-3.792-6.273z"/><path d="m17.452 27.583-5.607-1.009-2.835 4.731 6.905 3.505 3.791-3.547z"/><path d="m27.878 27.583-2.253 3.68 3.792 3.547 6.905-3.505-2.835-4.731z"/><path d="m22.661 31.905-3.812 3.568 1.495 6.679h4.634l1.494-6.679z"/></g></svg>
+    <text x="772" y="333" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="22" letter-spacing="1" fill="#ece9e2">TEAM VITALITY</text>
+    <text x="1096" y="335" text-anchor="end" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="26" fill="#e9c87a">×3</text>
+
+    <!-- Natus Vincere ×2 -->
+    <path d="M730 361 l19.9 11.5 v23 l-19.9 11.5 l-19.9 -11.5 v-23 Z" fill="#ece9e2"/>
+    <svg x="716" y="371.7" width="28" height="24.6" viewBox="0 0 213.7 188.1"><path d="M0,188.1L0.1,75.8L213.7,0l-0.1,112.3L0,188.1z" fill="#000105"/><polygon points="15.3,87.1 15.3,165.9 44.2,155.7 44.2,76.8" fill="#FDF135"/><polygon points="198.4,22.2 170,32.3 170,111.1 198.4,101" fill="#FDF135"/><polygon points="98.4,57.6 69.9,67.7 69.9,95.8 98.4,131.9" fill="#FDF135"/><polygon points="164.9,34 136.4,44.2 136.4,72.2 164.9,108.3" fill="#FDF135"/><polygon points="49.2,124.4 67.4,147.4 96.1,137.3 49.2,78.1" fill="#FDF135"/><polygon points="103.3,55.8 103.3,85.3 114.6,99.4 103.3,103.4 103.3,124.2 127.4,115.6 133.9,123.8 162.8,113.6 114,52" fill="#FDF135"/></svg>
+    <text x="772" y="391" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="22" letter-spacing="1" fill="#ece9e2">NATUS VINCERE</text>
+    <text x="1096" y="393" text-anchor="end" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="26" fill="#e9c87a">×2</text>
+
+    <line x1="708" y1="424" x2="1096" y2="424" stroke="#2a2b33"/>
+    <text x="708" y="468" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="15"><tspan fill="#8b8794">最新一届</tspan><tspan fill="#ece9e2" font-weight="600" dx="10">IEM Cologne 2026</tspan><tspan fill="#8b8794" dx="10">·</tspan><tspan fill="#7de3f2" font-weight="700" dx="10">Team Falcons</tspan></text>
+  </g>
+
+  <rect x="0.5" y="0.5" width="1199" height="559" rx="15.5" fill="none" stroke="#26272e"/>
+</svg>

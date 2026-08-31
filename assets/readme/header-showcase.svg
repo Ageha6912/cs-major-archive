@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 84" width="1200" height="84" role="img" aria-label="站点速览">
+  <title>区块标题:站点速览</title>
+  <rect x="0.5" y="0.5" width="1199" height="83" rx="14" fill="#14151b" stroke="#2a2b33"/>
+  <rect x="44" y="24" width="4" height="36" rx="2" fill="url(#g)"/>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d896"/><stop offset="1" stop-color="#d0a44e"/></linearGradient></defs>
+  <text x="64" y="36" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="11" font-weight="700" letter-spacing="3" fill="#d8b45c">SHOWCASE</text>
+  <text x="64" y="68" font-family="'Segoe UI','PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif" font-size="26" font-weight="700" fill="#ece9e2">站点速览</text>
+  <text x="1152" y="55" text-anchor="end" font-family="'Bebas Neue','Oswald','Arial Narrow','Franklin Gothic Medium',Impact,sans-serif" font-size="30" fill="#e9c87a" opacity="0.9">01</text>
+  <text x="1152" y="74" text-anchor="end" font-family="'Segoe UI','Helvetica Neue',Arial,'PingFang SC','Microsoft YaHei',sans-serif" font-size="10" letter-spacing="2" fill="#8b8794">CS MAJOR ARCHIVE</text>
+</svg>

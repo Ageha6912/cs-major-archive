@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { finalMapsOf, formatPurse, videosOf, visualPeriod } from '../data'
 import type { Major } from '../data'
 import TeamBadge from './TeamBadge'
@@ -43,8 +43,56 @@ export default function Timeline({
   onSelect: (id: string) => void
 }) {
   const [expanded, setExpanded] = useState(false)
+  const lineRef = useRef<HTMLDivElement>(null)
+  const spineRef = useRef<HTMLSpanElement>(null)
   const COLLAPSED_COUNT = 6
   const visible = expanded ? majors : majors.slice(0, COLLAPSED_COUNT)
+
+  // 流光脊线：scaleY 直接写 DOM，随阅读进度生长
+  useEffect(() => {
+    const line = lineRef.current
+    const spine = spineRef.current
+    if (!line || !spine) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const rect = line.getBoundingClientRect()
+      const p = Math.min(1, Math.max(0, (window.innerHeight * 0.72 - rect.top) / rect.height))
+      spine.style.transform = `scaleY(${p})`
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [expanded])
+
+  // 已读过的年份节点点亮
+  useEffect(() => {
+    const nodes = lineRef.current?.querySelectorAll('.tl__node')
+    if (!nodes) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-lit')
+            io.unobserve(entry.target)
+          }
+        }
+      },
+      { rootMargin: '0px 0px -55% 0px' },
+    )
+    nodes.forEach((n) => io.observe(n))
+    return () => io.disconnect()
+  }, [expanded])
+
   return (
     <section className="tl section" id="timeline">
       <div className="section-head" data-reveal>
@@ -52,7 +100,8 @@ export default function Timeline({
         <h2 className="section-head__title">历届征程</h2>
         <p className="section-head__desc">按下时间顺序，重温每一届的决赛、地图与主角。</p>
       </div>
-      <div className="tl__line">
+      <div className="tl__line" ref={lineRef}>
+        <span className="tl__spine" ref={spineRef} aria-hidden="true" />
         {visible.map((m, i) => {
           const videos = videosOf(m)
           const thumb = videos[0]

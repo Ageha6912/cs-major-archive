@@ -1,6 +1,7 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { hallOfFame, top20 } from '../data'
 import type { HoFEntry } from '../data'
+import { useCountUp } from '../hooks'
 import PlayerAvatar from './PlayerAvatar'
 
 type SortKey = 'appearances' | 'top10s' | 'numberOnes' | 'best'
@@ -17,19 +18,29 @@ function compare(a: HoFEntry, b: HoFEntry, key: SortKey): number {
   return b[key] - a[key]
 }
 
+function HoFStat({ end, label, active }: { end: number; label: string; active: boolean }) {
+  const value = useCountUp(end, active)
+  return (
+    <div>
+      <b>{value}</b>
+      <span>{label}</span>
+    </div>
+  )
+}
+
 function HoFRow({ entry, index }: { entry: HoFEntry; index: number }) {
   const [open, setOpen] = useState(false)
   const tier = index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : ''
   return (
-    <li className={`hof-row ${tier ? `hof-row--${tier}` : ''}`}>
-      <button className="hof-row__main" onClick={() => setOpen((v) => !v)}>
+    <li className={`hof-row ${tier ? `hof-row--${tier}` : ''}${open ? ' is-open' : ''}`}>
+      <button className="hof-row__main" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
         <span className="hof-row__no">{index + 1}</span>
         <PlayerAvatar name={entry.player} size={30} />
         <span className="hof-row__name">{entry.player}</span>
         <span className="hof-row__stat">
           <b>{entry.appearances}</b>次上榜
         </span>
-        <span className="hof-row__stat">
+        <span className="hof-row__stat hof-row__stat--tens">
           <b>{entry.top10s}</b>次前十
         </span>
         <span className="hof-row__stat hof-row__stat--ones">
@@ -40,26 +51,28 @@ function HoFRow({ entry, index }: { entry: HoFEntry; index: number }) {
           ▾
         </span>
       </button>
-      {open ? (
-        <div className="hof-row__detail">
-          <div className="hof-row__teams">
-            {entry.teams.map((t) => (
-              <span className="chip" key={t}>
-                {t}
-              </span>
-            ))}
+      <div className="hof-row__detail">
+        <div className="hof-row__detail-clip">
+          <div className="hof-row__detail-inner">
+            <div className="hof-row__teams">
+              {entry.teams.map((t) => (
+                <span className="chip" key={t}>
+                  {t}
+                </span>
+              ))}
+            </div>
+            <ol className="hof-row__years">
+              {entry.years.map((y) => (
+                <li key={y.year} className={y.rank === 1 ? 'is-1' : ''}>
+                  <b>{y.year}</b>
+                  <span className="hof-year__rank">#{y.rank}</span>
+                  <span className="hof-year__team">{y.team}</span>
+                </li>
+              ))}
+            </ol>
           </div>
-          <ol className="hof-row__years">
-            {entry.years.map((y) => (
-              <li key={y.year} className={y.rank === 1 ? 'is-1' : ''}>
-                <b>{y.year}</b>
-                <span className="hof-year__rank">#{y.rank}</span>
-                <span className="hof-year__team">{y.team}</span>
-              </li>
-            ))}
-          </ol>
         </div>
-      ) : null}
+      </div>
     </li>
   )
 }
@@ -68,6 +81,24 @@ export default function HallOfFame() {
   const all = useMemo(() => hallOfFame(), [])
   const [sortKey, setSortKey] = useState<SortKey>('appearances')
   const [query, setQuery] = useState('')
+  const statsRef = useRef<HTMLDivElement>(null)
+  const [statsActive, setStatsActive] = useState(false)
+
+  useEffect(() => {
+    const el = statsRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStatsActive(true)
+          io.disconnect()
+        }
+      },
+      { threshold: 0.35 },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -84,26 +115,14 @@ export default function HallOfFame() {
         <p className="section-head__kicker">HALL OF FAME · 名人堂</p>
         <h2 className="section-head__title">常青树榜单</h2>
         <p className="section-head__desc">
-          把 2013—2025 共 {entries} 个 TOP20 名额叠加起来：谁的名字出现得最多？谁最多次站上第一？
+          把 2013-2025 共 {entries} 个 TOP20 名额叠加起来：谁的名字出现得最多？谁最多次站上第一？
         </p>
       </div>
-      <div className="hof__stats" data-reveal>
-        <div>
-          <b>{all.length}</b>
-          <span>不同选手曾上榜</span>
-        </div>
-        <div>
-          <b>{tenPlus}</b>
-          <span>上榜 ≥ 10 次</span>
-        </div>
-        <div>
-          <b>{all.filter((e) => e.numberOnes > 0).length}</b>
-          <span>曾登顶年度第一</span>
-        </div>
-        <div>
-          <b>{all.filter((e) => e.top10s >= 5).length}</b>
-          <span>前十 ≥ 5 次</span>
-        </div>
+      <div className="hof__stats" ref={statsRef} data-reveal>
+        <HoFStat end={all.length} label="不同选手曾上榜" active={statsActive} />
+        <HoFStat end={tenPlus} label="上榜 ≥ 10 次" active={statsActive} />
+        <HoFStat end={all.filter((e) => e.numberOnes > 0).length} label="曾登顶年度第一" active={statsActive} />
+        <HoFStat end={all.filter((e) => e.top10s >= 5).length} label="前十 ≥ 5 次" active={statsActive} />
       </div>
       <div className="hof__toolbar" data-reveal>
         <div className="hof__sorts">
@@ -125,12 +144,14 @@ export default function HallOfFame() {
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
-      <ol className="hof__list" data-reveal>
-        {list.map((entry, i) => (
-          <HoFRow key={entry.player} entry={entry} index={i} />
-        ))}
-        {list.length === 0 ? <li className="hof__empty">没有找到匹配的选手</li> : null}
-      </ol>
+      <div data-reveal>
+        <ol className="hof__list hof__list--swap" key={`${sortKey}-${query}`}>
+          {list.map((entry, i) => (
+            <HoFRow key={entry.player} entry={entry} index={i} />
+          ))}
+          {list.length === 0 ? <li className="hof__empty">没有找到匹配的选手</li> : null}
+        </ol>
+      </div>
     </section>
   )
 }

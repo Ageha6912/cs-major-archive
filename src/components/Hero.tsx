@@ -15,6 +15,7 @@ function Stat({ end, label, active }: { end: number; label: string; active: bool
 
 export default function Hero({ onBrowse }: { onBrowse: () => void }) {
   const ref = useRef<HTMLDivElement>(null)
+  const mainRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -28,6 +29,29 @@ export default function Hero({ onBrowse }: { onBrowse: () => void }) {
     )
     if (ref.current) io.observe(ref.current)
     return () => io.disconnect()
+  }, [])
+
+  // 主内容随滚动缓慢下沉 + 轻微淡出：离场时制造纵深
+  useEffect(() => {
+    const el = mainRef.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const y = Math.min(window.scrollY, window.innerHeight)
+      el.style.transform = `translate3d(0, ${y * 0.16}px, 0)`
+      el.style.opacity = String(1 - (y / window.innerHeight) * 0.45)
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
   }, [])
 
   const goCount = new Set(majors.map((m) => m.champion.team)).size
@@ -45,24 +69,28 @@ export default function Hero({ onBrowse }: { onBrowse: () => void }) {
       <div className="hero__glow hero__glow--gold" aria-hidden="true" />
       <div className="hero__glow hero__glow--cyan" aria-hidden="true" />
       <div className="hero__inner">
-        <div className="hero__main">
-          <p className="hero__kicker" data-reveal>
+        <div className="hero__main" ref={mainRef}>
+          <p className="hero__kicker">
             COUNTER-STRIKE MAJOR CHAMPIONSHIP ARCHIVE
           </p>
-          <h1 className="hero__title" data-reveal>
-            <span className="hero__title-line">CS MAJOR</span>
-            <span className="hero__title-line hero__title-line--accent">ARCHIVE</span>
+          <h1 className="hero__title">
+            <span className="hero__title-mask">
+              <span className="hero__title-line">CS MAJOR</span>
+            </span>
+            <span className="hero__title-mask">
+              <span className="hero__title-line hero__title-line--accent">ARCHIVE</span>
+            </span>
           </h1>
-          <p className="hero__sub" data-reveal>
-            2013 — 2026 · 二十四届冠军之路 · CS:GO 与 CS2 的全部历史
+          <p className="hero__sub">
+            2013-2026 · 二十四届冠军之路 · CS:GO 与 CS2 的全部历史
           </p>
-          <div className="hero__stats" data-reveal>
+          <div className="hero__stats">
             <Stat end={majors.length} label="届 Major" active={active} />
             <Stat end={goCount} label="支冠军战队" active={active} />
             <Stat end={top20Years} label="年 HLTV TOP20" active={active} />
             <Stat end={cityCount} label="座不同主办城市" active={active} />
           </div>
-          <div className="hero__actions" data-reveal>
+          <div className="hero__actions">
             <button className="btn btn--gold" onClick={onBrowse}>
               浏览全部 24 届
             </button>
@@ -71,7 +99,7 @@ export default function Hero({ onBrowse }: { onBrowse: () => void }) {
             </a>
           </div>
         </div>
-        <aside className="hero__side" data-reveal>
+        <aside className="hero__side">
           <p className="hero__side-kicker">CHAMPION CLUB</p>
           <h3 className="hero__side-title">冠军俱乐部</h3>
           <div className="hero__club">

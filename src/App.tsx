@@ -1,4 +1,5 @@
-import { Suspense, lazy, useEffect, useState } from 'react'
+import { Suspense, lazy, useEffect, useRef, useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import ChampionHall from './components/ChampionHall'
 import HallOfFame from './components/HallOfFame'
 import Hero from './components/Hero'
@@ -6,21 +7,58 @@ import MajorDetail from './components/MajorDetail'
 import Timeline from './components/Timeline'
 import Top20Section from './components/Top20Section'
 import { majors } from './data'
-import { useReveal, useScrollProgress } from './hooks'
+import { useReveal } from './hooks'
 
 const SideRays = lazy(() => import('./components/SideRays'))
 
-function BackToTop() {
-  const [show, setShow] = useState(false)
+/** 滚动进度条：直接写 DOM transform，避免每帧重渲染整棵树 */
+function ProgressRail() {
+  const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 700)
-    onScroll()
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const doc = document.documentElement
+      const max = doc.scrollHeight - doc.clientHeight
+      if (ref.current) ref.current.style.transform = `scaleX(${max > 0 ? doc.scrollTop / max : 0})`
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('resize', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
+  return <div className="progress" ref={ref} style={{ transform: 'scaleX(0)' }} aria-hidden="true" />
+}
+
+function BackToTop() {
+  const ref = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    let raf = 0
+    const update = () => {
+      raf = 0
+      ref.current?.classList.toggle('is-visible', window.scrollY > 700)
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
   }, [])
   return (
     <button
-      className={`to-top ${show ? 'is-visible' : ''}`}
+      ref={ref}
+      className="to-top"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="回到顶部"
       title="回到顶部"
@@ -30,11 +68,32 @@ function BackToTop() {
   )
 }
 
+/** 导航 scrollspy：当前所在区块的链接高亮 */
+function useScrollSpy() {
+  useEffect(() => {
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav__links a'))
+    const sections = links
+      .map((l) => document.querySelector<HTMLElement>(l.getAttribute('href') ?? ''))
+      .filter((el): el is HTMLElement => !!el)
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const i = sections.indexOf(entry.target as HTMLElement)
+          if (i >= 0) links[i].classList.toggle('is-active', entry.isIntersecting)
+        }
+      },
+      { rootMargin: '-25% 0px -65% 0px' },
+    )
+    sections.forEach((s) => io.observe(s))
+    return () => io.disconnect()
+  }, [])
+}
+
 export default function App() {
   const [eraFilter, setEraFilter] = useState<'all' | 'CS:GO' | 'CS2'>('all')
   const [detailId, setDetailId] = useState<string | null>(null)
-  const progress = useScrollProgress()
   useReveal()
+  useScrollSpy()
 
   useEffect(() => {
     const ready = requestAnimationFrame(() => document.documentElement.setAttribute('data-page-ready', 'true'))
@@ -65,7 +124,7 @@ export default function App() {
         </div>
       </Suspense>
       <div className={`app${detailId ? ' is-hidden' : ''}`}>
-        <div className="progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
+        <ProgressRail />
         <nav className="nav">
           <a className="nav__logo" href="#top">
             CS<span>MAJOR</span>
@@ -101,7 +160,9 @@ export default function App() {
         </footer>
         <BackToTop />
       </div>
-      {detailId ? <MajorDetail id={detailId} onClose={() => setDetailId(null)} onSelect={setDetailId} /> : null}
+      <AnimatePresence>
+        {detailId ? <MajorDetail id={detailId} onClose={() => setDetailId(null)} onSelect={setDetailId} /> : null}
+      </AnimatePresence>
     </div>
   )
 }

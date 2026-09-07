@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import {
   championTop20,
   finalMapsOf,
@@ -290,7 +291,15 @@ export default function MajorDetail({
   const maxScore = Math.max(19, ...maps.flatMap((mp) => mp.scores))
 
   return (
-    <div className={`detail era-${major.era === 'CS2' ? 'cs2' : 'csgo'}`} role="dialog" aria-modal="true">
+    <motion.div
+      className={`detail era-${major.era === 'CS2' ? 'cs2' : 'csgo'}`}
+      role="dialog"
+      aria-modal="true"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.28, ease: [0.22, 0.61, 0.36, 1] }}
+    >
       <div className="detail__bar">
         <button className="detail__back" onClick={onClose}>
           ← 返回目录
@@ -303,7 +312,7 @@ export default function MajorDetail({
       <article className="detail__body">
         <header className="detail__hero">
           <p className="detail__kicker">
-            {major.era} · {major.dates}
+            {major.era} · {major.dates.replace(/\s*[–—]\s*/, '-')}
           </p>
           <h2 className="detail__title">{major.fullName}</h2>
           <p className="detail__venue">
@@ -429,6 +438,6 @@ export default function MajorDetail({
           )}
         </nav>
       </article>
-    </div>
+    </motion.div>
   )
 }

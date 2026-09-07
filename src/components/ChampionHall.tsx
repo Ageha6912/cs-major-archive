@@ -111,8 +111,27 @@ export default function ChampionHall({
   onSelect: (id: string) => void
 }) {
   const shelfRef = useRef<HTMLDivElement>(null)
+  const yearsRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
+  const [activeIdx, setActiveIdx] = useState(0)
   const list = (eraFilter === 'all' ? majors : majors.filter((m) => m.era === eraFilter)).slice().reverse()
+
+  useEffect(() => {
+    const el = shelfRef.current
+    if (el) el.scrollTo({ left: 0 })
+    yearsRef.current?.scrollTo({ left: 0 })
+    setActiveIdx(0)
+  }, [eraFilter])
+
+  // 活跃年份卡片在轨道中保持居中，形成“跟随滚动”的寻路反馈。
+  // 只滚动轨道自身，绝不能用 scrollIntoView —— 它会把整页窗口滚离原位。
+  useEffect(() => {
+    const rail = yearsRef.current
+    const btn = rail?.children[activeIdx] as HTMLElement | undefined
+    if (!rail || !btn) return
+    const target = btn.offsetLeft - (rail.clientWidth - btn.offsetWidth) / 2
+    rail.scrollTo({ left: Math.max(0, target), behavior: 'smooth' })
+  }, [activeIdx])
 
   useEffect(() => {
     const el = shelfRef.current
@@ -131,6 +150,22 @@ export default function ChampionHall({
     if (!el) return
     const max = el.scrollWidth - el.clientWidth
     setProgress(max > 0 ? el.scrollLeft / max : 0)
+    const cards = el.querySelectorAll<HTMLElement>('.hall-card')
+    let nearest = 0
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i]
+      if (card.offsetLeft - el.offsetLeft <= el.scrollLeft + 12) nearest = i
+      else break
+    }
+    setActiveIdx(nearest)
+  }
+
+  const jumpTo = (i: number) => {
+    const el = shelfRef.current
+    const card = el?.querySelectorAll<HTMLElement>('.hall-card')[i]
+    if (!el || !card) return
+    el.scrollTo({ left: card.offsetLeft - el.offsetLeft - 4, behavior: 'smooth' })
+    setActiveIdx(i)
   }
 
   return (
@@ -142,10 +177,24 @@ export default function ChampionHall({
           从 2026 年科隆的新王，回溯到 2013 年延雪平的初代冠军——每一届的冠军、决赛与四强都在这里列队。
         </p>
       </div>
-      <div className="hall__shelf" ref={shelfRef} onScroll={onScroll} data-reveal>
-        {list.map((m) => (
-          <HallCard key={m.id} major={m} onSelect={onSelect} />
+      <div className="hall__years" ref={yearsRef} data-reveal>
+        {list.map((m, i) => (
+          <button
+            key={m.id}
+            className={`hall__year ${i === activeIdx ? 'is-active' : ''}`}
+            onClick={() => jumpTo(i)}
+            title={m.fullName}
+          >
+            {m.year}
+          </button>
         ))}
+      </div>
+      <div className="hall__shelf" ref={shelfRef} onScroll={onScroll} data-reveal>
+        <div className="hall__swap" key={eraFilter}>
+          {list.map((m) => (
+            <HallCard key={m.id} major={m} onSelect={onSelect} />
+          ))}
+        </div>
       </div>
       <div className="hall__progress" data-reveal>
         <div className="hall__progress-track">

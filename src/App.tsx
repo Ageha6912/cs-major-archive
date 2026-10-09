@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import ChampionHall from './components/ChampionHall'
 import HallOfFame from './components/HallOfFame'
@@ -7,9 +7,8 @@ import MajorDetail from './components/MajorDetail'
 import Timeline from './components/Timeline'
 import Top20Section from './components/Top20Section'
 import { majors } from './data'
+import { gsap } from './lib/motion'
 import { useReveal } from './hooks'
-
-const SideRays = lazy(() => import('./components/SideRays'))
 
 /** 滚动进度条：直接写 DOM transform，避免每帧重渲染整棵树 */
 function ProgressRail() {
@@ -68,25 +67,164 @@ function BackToTop() {
   )
 }
 
-/** 导航 scrollspy：当前所在区块的链接高亮 */
+/** 委托式按压反馈：GSAP 独占这些元素的 transform */
+const PRESS_SCALE: [string, number][] = [
+  ['.champ-card', 0.98],
+  ['.legend-card', 0.98],
+  ['.hof-row__main', 0.97],
+  ['.video', 0.97],
+  ['.detail__nav button', 0.97],
+]
+
+const HOVER_LIFT: [string, number][] = [['.detail__nav button', -2]]
+
+function usePressFeedback() {
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const pressSelector = PRESS_SCALE.map(([s]) => s).join(',')
+    const liftSelector = HOVER_LIFT.map(([s]) => s).join(',')
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)')
+    let pressed: Element | null = null
+    let hovered: Element | null = null
+
+    const matchValue = (el: Element, table: [string, number][]) => {
+      for (const [sel, value] of table) if (el.matches(sel)) return value
+      return 1
+    }
+
+    const onDown = (e: PointerEvent) => {
+      if (e.button !== 0 || !(e.target instanceof Element)) return
+      const el = e.target.closest(pressSelector)
+      if (!el) return
+      pressed = el
+      gsap.to(el, { scale: matchValue(el, PRESS_SCALE), duration: 0.16, ease: 'power2.out', overwrite: 'auto' })
+    }
+    const release = () => {
+      if (!pressed) return
+      const el = pressed
+      pressed = null
+      gsap.to(el, { scale: 1, duration: 0.2, ease: 'power2.out', overwrite: 'auto', clearProps: 'scale' })
+    }
+
+    const onOver = (e: MouseEvent) => {
+      if (!canHover.matches || !(e.target instanceof Element)) return
+      const el = e.target.closest(liftSelector)
+      if (!el || el === hovered) return
+      if (e.relatedTarget instanceof Node && el.contains(e.relatedTarget)) return
+      hovered = el
+      gsap.to(el, { y: matchValue(el, HOVER_LIFT), duration: 0.25, ease: 'power3.out', overwrite: 'auto' })
+    }
+    const onOut = (e: MouseEvent) => {
+      if (!canHover.matches || !(e.target instanceof Element)) return
+      const el = e.target.closest(liftSelector)
+      if (!el || el !== hovered) return
+      if (e.relatedTarget instanceof Node && el.contains(e.relatedTarget)) return
+      hovered = null
+      gsap.to(el, {
+        y: 0,
+        duration: 0.25,
+        ease: 'power3.out',
+        overwrite: 'auto',
+        ...(pressed === el ? {} : { clearProps: 'y' }),
+      })
+    }
+
+    window.addEventListener('pointerdown', onDown)
+    window.addEventListener('pointerup', release)
+    window.addEventListener('pointercancel', release)
+    window.addEventListener('mouseover', onOver)
+    window.addEventListener('mouseout', onOut)
+    window.addEventListener('blur', release)
+    return () => {
+      window.removeEventListener('pointerdown', onDown)
+      window.removeEventListener('pointerup', release)
+      window.removeEventListener('pointercancel', release)
+      window.removeEventListener('mouseover', onOver)
+      window.removeEventListener('mouseout', onOut)
+      window.removeEventListener('blur', release)
+    }
+  }, [])
+}
+
+/** 懒加载资源淡入：捕获阶段委托 load 事件 */
+function useMediaLoadFade() {
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const onLoad = (e: Event) => {
+      const t = e.target
+      const isFrame = t instanceof HTMLIFrameElement
+      if (!isFrame && !(t instanceof HTMLImageElement)) return
+      if (t.closest('.page-skeleton')) return
+      gsap.fromTo(
+        t,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: isFrame ? 0.4 : 0.3,
+          ease: 'power1.out',
+          overwrite: 'auto',
+          clearProps: 'opacity',
+        },
+      )
+    }
+    document.addEventListener('load', onLoad, true)
+    return () => document.removeEventListener('load', onLoad, true)
+  }, [])
+}
+
+/** 导航 scrollspy：当前所在区块的链接高亮（HOME 绑定 hero，其余绑定各区块） */
 function useScrollSpy() {
   useEffect(() => {
     const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav__links a'))
-    const sections = links
-      .map((l) => document.querySelector<HTMLElement>(l.getAttribute('href') ?? ''))
-      .filter((el): el is HTMLElement => !!el)
+    const pairs = links
+      .map((l) => ({
+        link: l,
+        el:
+          l.getAttribute('href') === '#top'
+            ? document.querySelector<HTMLElement>('.hero')
+            : document.querySelector<HTMLElement>(l.getAttribute('href') ?? ''),
+      }))
+      .filter((p): p is { link: HTMLAnchorElement; el: HTMLElement } => !!p.el)
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          const i = sections.indexOf(entry.target as HTMLElement)
-          if (i >= 0) links[i].classList.toggle('is-active', entry.isIntersecting)
+          const i = pairs.findIndex((p) => p.el === entry.target)
+          if (i >= 0) pairs[i].link.classList.toggle('is-active', entry.isIntersecting)
         }
       },
       { rootMargin: '-25% 0px -65% 0px' },
     )
-    sections.forEach((s) => io.observe(s))
+    pairs.forEach((p) => io.observe(p.el))
     return () => io.disconnect()
   }, [])
+}
+
+function EraSwitch({
+  eraFilter,
+  setEraFilter,
+}: {
+  eraFilter: 'all' | 'CS:GO' | 'CS2'
+  setEraFilter: (v: 'all' | 'CS:GO' | 'CS2') => void
+}) {
+  const options = [
+    { value: 'all', label: 'ALL' },
+    { value: 'CS:GO', label: 'CS:GO' },
+    { value: 'CS2', label: 'CS2' },
+  ] as const
+  return (
+    <div className="era-switch" role="group" aria-label="按赛事年代筛选">
+      {options.map((o) => (
+        <button
+          key={o.value}
+          className={`era-switch__btn${eraFilter === o.value ? ' is-active' : ''}${o.value === 'CS2' ? ' era-cs2' : o.value === 'CS:GO' ? ' era-csgo' : ''}`}
+          onClick={() => setEraFilter(o.value)}
+          aria-pressed={eraFilter === o.value}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  )
 }
 
 export default function App() {
@@ -94,69 +232,71 @@ export default function App() {
   const [detailId, setDetailId] = useState<string | null>(null)
   useReveal()
   useScrollSpy()
+  usePressFeedback()
+  useMediaLoadFade()
 
   useEffect(() => {
     const ready = requestAnimationFrame(() => document.documentElement.setAttribute('data-page-ready', 'true'))
     return () => cancelAnimationFrame(ready)
   }, [])
 
-  const scrollToHall = () => {
-    document.getElementById('hall')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <div className="shell">
-      <Suspense fallback={<div className="bg-fx" aria-hidden="true" />}>
-        <div className="bg-fx" aria-hidden="true">
-          <SideRays
-            speed={2}
-            rayColor1="#d8b45c"
-            rayColor2="#96c8ff"
-            intensity={2.2}
-            spread={2.2}
-            origin="top-right"
-            saturation={1.4}
-            blend={0.72}
-            falloff={1.5}
-            opacity={1}
-          />
-          <div className="bg-fx__veil" />
-        </div>
-      </Suspense>
+      <div className="bg-fx" aria-hidden="true" />
       <div className={`app${detailId ? ' is-hidden' : ''}`}>
         <ProgressRail />
-        <nav className="nav">
-          <a className="nav__logo" href="#top">
-            CS<span>MAJOR</span>
-            <i>ARCHIVE</i>
+        <header className="nav">
+          <a className="nav__logo" href="#top" aria-label="CS Major Archive 返回页首">
+            <span className="nav__mark" aria-hidden="true">
+              A
+            </span>
+            <span className="nav__brand">CS MAJOR ARCHIVE</span>
           </a>
-          <div className="nav__links">
-            <a href="#hall">冠军殿堂</a>
-            <a href="#timeline">编年史</a>
-            <a href="#top20">TOP20</a>
-            <a href="#hof">名人堂</a>
-          </div>
-        </nav>
+          <nav className="nav__links" aria-label="站点导航">
+            <a href="#top">HOME</a>
+            <a href="#hall">CHAMPIONS</a>
+            <a href="#timeline">TIMELINE</a>
+            <a href="#top20">TOP 20</a>
+            <a href="#hof">HALL OF FAME</a>
+          </nav>
+          <EraSwitch eraFilter={eraFilter} setEraFilter={setEraFilter} />
+        </header>
         <main id="top">
-          <Hero onBrowse={scrollToHall} />
-          <div className="era-filter" data-reveal>
-            <button className={eraFilter === 'all' ? 'is-active' : ''} onClick={() => setEraFilter('all')}>
-              全部 24 届
-            </button>
-            <button className={eraFilter === 'CS:GO' ? 'is-active' : ''} onClick={() => setEraFilter('CS:GO')}>
-              CS:GO 时代
-            </button>
-            <button className={eraFilter === 'CS2' ? 'is-active' : ''} onClick={() => setEraFilter('CS2')}>
-              CS2 时代
-            </button>
-          </div>
+          <Hero onSelect={setDetailId} />
           <ChampionHall majors={majors} eraFilter={eraFilter} onSelect={setDetailId} />
           <Timeline majors={majors} onSelect={setDetailId} />
-          <Top20Section />
-          <HallOfFame />
+          <section className="bottom band" aria-label="HLTV TOP 20 与名人堂">
+            <div className="bottom__grid">
+              <Top20Section />
+              <HallOfFame />
+            </div>
+          </section>
         </main>
         <footer className="foot">
-          <p>CS MAJOR ARCHIVE · 数据整理自 Wikipedia / HLTV · 视频版权归原作者所有</p>
+          <div className="foot__inner">
+            <span className="foot__bar" aria-hidden="true" />
+            <p className="foot__logo">CS MAJOR ARCHIVE</p>
+            <p className="foot__tag">HISTORY LIVES HERE</p>
+            <div className="foot__links">
+              <a
+                href="https://github.com/Ageha6912/cs-major-archive#readme"
+                target="_blank"
+                rel="noreferrer"
+              >
+                About
+              </a>
+              <a href="https://www.hltv.org/" target="_blank" rel="noreferrer">
+                Data Sources
+              </a>
+              <a href="https://github.com/Ageha6912/cs-major-archive" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+              <span className="sep" aria-hidden="true" />
+              <a href="https://github.com/Ageha6912/cs-major-archive" target="_blank" rel="noreferrer" aria-label="GitHub 仓库">
+                <i className="fa-brands fa-github" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
         </footer>
         <BackToTop />
       </div>

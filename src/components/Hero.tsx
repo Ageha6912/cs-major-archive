@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { majors, top20 } from '../data'
+import crowdTex from '../assets/archive/crowd-tex.jpg'
+import heroTrophy from '../assets/archive/hero-trophy.jpg'
+import arenaStrip from '../assets/archive/arena-strip2.jpg'
+import { eventName, formatPurse, majors, ORGANIZERS, top20 } from '../data'
 import { useCountUp } from '../hooks'
-import TeamBadge from './TeamBadge'
+import TeamLogo from './TeamLogo'
 
 function Stat({ end, label, active }: { end: number; label: string; active: boolean }) {
   const value = useCountUp(end, active)
@@ -13,9 +16,8 @@ function Stat({ end, label, active }: { end: number; label: string; active: bool
   )
 }
 
-export default function Hero({ onBrowse }: { onBrowse: () => void }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const mainRef = useRef<HTMLDivElement>(null)
+export default function Hero({ onSelect }: { onSelect: (id: string) => void }) {
+  const ref = useRef<HTMLElement>(null)
   const [active, setActive] = useState(false)
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -31,112 +33,92 @@ export default function Hero({ onBrowse }: { onBrowse: () => void }) {
     return () => io.disconnect()
   }, [])
 
-  // 主内容随滚动缓慢下沉 + 轻微淡出：离场时制造纵深
-  useEffect(() => {
-    const el = mainRef.current
-    if (!el) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    let raf = 0
-    const update = () => {
-      raf = 0
-      const y = Math.min(window.scrollY, window.innerHeight)
-      el.style.transform = `translate3d(0, ${y * 0.16}px, 0)`
-      el.style.opacity = String(1 - (y / window.innerHeight) * 0.45)
-    }
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      if (raf) cancelAnimationFrame(raf)
-    }
-  }, [])
-
+  const featured = majors[majors.length - 1]
   const goCount = new Set(majors.map((m) => m.champion.team)).size
   const cityCount = new Set(majors.map((m) => m.location)).size
-  const top20Years = Object.keys(top20).length
-  const titleCount = new Map<string, number>()
-  for (const m of majors) titleCount.set(m.champion.team, (titleCount.get(m.champion.team) ?? 0) + 1)
-  const clubs = [...titleCount.entries()]
-    .filter(([, n]) => n >= 2)
-    .sort((a, b) => b[1] - a[1])
+  const top20YearCount = Object.keys(top20).length
 
   return (
     <header className="hero" ref={ref}>
-      <div className="hero__grid" aria-hidden="true" />
-      <div className="hero__glow hero__glow--gold" aria-hidden="true" />
-      <div className="hero__glow hero__glow--cyan" aria-hidden="true" />
+      <div className="hero__bg" style={{ ['--hero-photo' as string]: `url(${crowdTex})` }} aria-hidden="true" />
+      <div className="hero__trophy" style={{ ['--trophy-photo' as string]: `url(${heroTrophy})` }} aria-hidden="true" />
+      <div className="hero__shade" aria-hidden="true" />
       <div className="hero__inner">
-        <div className="hero__main" ref={mainRef}>
-          <p className="hero__kicker">
-            COUNTER-STRIKE MAJOR CHAMPIONSHIP ARCHIVE
-          </p>
+        <div className="hero__main">
+          <p className="hero__kicker">THE HISTORY OF</p>
           <h1 className="hero__title">
             <span className="hero__title-mask">
-              <span className="hero__title-line">CS MAJOR</span>
+              <span className="hero__title-line">COUNTER-STRIKE</span>
             </span>
             <span className="hero__title-mask">
-              <span className="hero__title-line hero__title-line--accent">ARCHIVE</span>
+              <span className="hero__title-line hero__title-line--accent">MAJORS</span>
             </span>
           </h1>
-          <p className="hero__sub">
-            2013-2026 · 二十四届冠军之路 · CS:GO 与 CS2 的全部历史
+          <p className="hero__years">
+            2013 <i aria-hidden="true">—</i> 2026
           </p>
           <div className="hero__stats">
-            <Stat end={majors.length} label="届 Major" active={active} />
-            <Stat end={goCount} label="支冠军战队" active={active} />
-            <Stat end={top20Years} label="年 HLTV TOP20" active={active} />
-            <Stat end={cityCount} label="座不同主办城市" active={active} />
-          </div>
-          <div className="hero__actions">
-            <button className="btn btn--gold" onClick={onBrowse}>
-              浏览全部 24 届
-            </button>
-            <a className="btn btn--ghost" href="#top20">
-              查看 HLTV 年度 TOP20
-            </a>
+            <Stat end={majors.length} label="MAJORS" active={active} />
+            <Stat end={goCount} label="CHAMPION TEAMS" active={active} />
+            <Stat end={top20YearCount} label="TOP20 YEARS" active={active} />
+            <Stat end={cityCount} label="HOST CITIES" active={active} />
           </div>
         </div>
-        <aside className="hero__side">
-          <p className="hero__side-kicker">CHAMPION CLUB</p>
-          <h3 className="hero__side-title">冠军俱乐部</h3>
-          <div className="hero__club">
-            {clubs.map(([team, n]) => (
-              <div className="hero__club-row" key={team}>
-                <TeamBadge team={team} size={32} />
-                <span className="hero__club-name">{team}</span>
-                <span className="hero__club-count">×{n}</span>
+
+        <p className="hero__quote">
+          Not just a game,
+          <br />
+          but a history of
+          <br />
+          extraordinary people.
+        </p>
+
+        <aside className="feat">
+          <div className="feat__body">
+            <div className="feat__head">
+              <p className="feat__kicker">
+                <i className="fa-solid fa-trophy" aria-hidden="true" />
+                FEATURED MAJOR
+              </p>
+              <button className="feat__view" onClick={() => onSelect(featured.id)}>
+                VIEW ALL
+                <i className="fa-solid fa-arrow-right-long" aria-hidden="true" />
+              </button>
+            </div>
+            <h2 className="feat__title">
+              {(ORGANIZERS[featured.id]?.label ?? eventName(featured.fullName, featured.year)) + ' ' + featured.name}
+            </h2>
+            <p className="feat__sub">{featured.location}</p>
+            <div className="feat__duel">
+              <div className="feat__team feat__team--champ">
+                <TeamLogo team={featured.champion.team} size={54} />
+                <b>{featured.champion.team}</b>
+                <span className="feat__tag">CHAMPION</span>
               </div>
-            ))}
-          </div>
-          <div className="hero__side-divider" aria-hidden="true" />
-          <p className="hero__side-kicker">ALL CHAMPIONS · 历届冠军</p>
-          <div className="hero__champ-list">
-            {majors.map((m) => (
-              <div className="hero__champ-row" key={m.id}>
-                <span className="hero__champ-year">{m.year}</span>
-                <TeamBadge team={m.champion.team} size={26} />
-                <span className="hero__champ-name">{m.champion.team}</span>
-                <span className={`hero__champ-era ${m.era === 'CS2' ? 'is-cs2' : ''}`}>{m.era}</span>
+              <div className="feat__score">{featured.score.replace('–', ' : ')}</div>
+              <div className="feat__team">
+                <TeamLogo team={featured.runnerUp.team} size={54} />
+                <b>{featured.runnerUp.team}</b>
+                <span className="feat__tag">RUNNER-UP</span>
               </div>
-            ))}
+            </div>
+            <div className="feat__meta">
+              <span>
+                <i className="fa-solid fa-location-dot" aria-hidden="true" />
+                {featured.location}
+              </span>
+              <span>
+                <i className="fa-solid fa-coins" aria-hidden="true" />
+                {formatPurse(featured.purse)}
+              </span>
+              <span>
+                <i className="fa-solid fa-calendar-days" aria-hidden="true" />
+                {featured.dates}
+              </span>
+            </div>
           </div>
+          <div className="feat__photo" style={{ ['--feat-photo' as string]: `url(${arenaStrip})` }} aria-hidden="true" />
         </aside>
-      </div>
-      <div className="hero__ticker" aria-hidden="true">
-        <div className="hero__ticker-track">
-          {[0, 1].map((dup) => (
-            <span className="hero__ticker-row" key={dup}>
-              {majors.map((m) => (
-                <span className="hero__ticker-item" key={m.id + dup}>
-                  {m.fullName} <i>✦</i>
-                </span>
-              ))}
-            </span>
-          ))}
-        </div>
       </div>
     </header>
   )

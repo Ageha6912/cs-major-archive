@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { hallOfFame, top20 } from '../data'
+import { hallOfFame, playerImage, top20 } from '../data'
 import type { HoFEntry } from '../data'
 import { useCountUp } from '../hooks'
-import PlayerAvatar from './PlayerAvatar'
 
 type SortKey = 'appearances' | 'top10s' | 'numberOnes' | 'best'
 
@@ -28,6 +27,30 @@ function HoFStat({ end, label, active }: { end: number; label: string; active: b
   )
 }
 
+function LegendPhoto({ name }: { name: string }) {
+  const image = playerImage(name)
+  if (image) {
+    return <img className="legend__photo" src={image} alt={name} loading="lazy" />
+  }
+  return (
+    <span className="legend__photo legend__photo--fallback" aria-hidden="true">
+      {name.slice(0, 2).toUpperCase()}
+    </span>
+  )
+}
+
+function RowAvatar({ name }: { name: string }) {
+  const image = playerImage(name)
+  if (image) {
+    return <img className="player-avatar" src={image} alt="" width={28} height={28} loading="lazy" />
+  }
+  return (
+    <span className="player-avatar player-avatar--fallback" style={{ width: 28, height: 28, fontSize: 10 }} aria-hidden="true">
+      {name.slice(0, 2).toUpperCase()}
+    </span>
+  )
+}
+
 function HoFRow({ entry, index }: { entry: HoFEntry; index: number }) {
   const [open, setOpen] = useState(false)
   const tier = index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? 'bronze' : ''
@@ -35,7 +58,7 @@ function HoFRow({ entry, index }: { entry: HoFEntry; index: number }) {
     <li className={`hof-row ${tier ? `hof-row--${tier}` : ''}${open ? ' is-open' : ''}`}>
       <button className="hof-row__main" onClick={() => setOpen((v) => !v)} aria-expanded={open}>
         <span className="hof-row__no">{index + 1}</span>
-        <PlayerAvatar name={entry.player} size={30} />
+        <RowAvatar name={entry.player} />
         <span className="hof-row__name">{entry.player}</span>
         <span className="hof-row__stat">
           <b>{entry.appearances}</b>次上榜
@@ -81,6 +104,7 @@ export default function HallOfFame() {
   const all = useMemo(() => hallOfFame(), [])
   const [sortKey, setSortKey] = useState<SortKey>('appearances')
   const [query, setQuery] = useState('')
+  const [legendIdx, setLegendIdx] = useState(0)
   const statsRef = useRef<HTMLDivElement>(null)
   const [statsActive, setStatsActive] = useState(false)
 
@@ -100,6 +124,17 @@ export default function HallOfFame() {
     return () => io.disconnect()
   }, [])
 
+  const legends = useMemo(
+    () =>
+      [...all]
+        .sort((a, b) => compare(a, b, 'appearances') || compare(a, b, 'numberOnes') || a.best - b.best)
+        .slice(0, 3),
+    [all],
+  )
+  const years = Object.keys(top20).map(Number).sort((a, b) => a - b)
+  const activeLegend = legends[legendIdx]
+  const rankByYear = new Map(activeLegend?.years.map((y) => [y.year, y.rank]) ?? [])
+
   const list = useMemo(() => {
     const q = query.trim().toLowerCase()
     const filtered = q ? all.filter((e) => e.player.toLowerCase().includes(q)) : all
@@ -110,20 +145,79 @@ export default function HallOfFame() {
   const tenPlus = all.filter((e) => e.appearances >= 10).length
 
   return (
-    <section className="hof section" id="hof">
-      <div className="section-head" data-reveal>
-        <p className="section-head__kicker">HALL OF FAME · 名人堂</p>
-        <h2 className="section-head__title">常青树榜单</h2>
-        <p className="section-head__desc">
-          把 2013-2025 共 {entries} 个 TOP20 名额叠加起来：谁的名字出现得最多？谁最多次站上第一？
-        </p>
+    <section id="hof" className="panel panel__pad hof" data-reveal>
+      <div className="hof__head">
+        <div className="hof__head-titles">
+          <h2 className="hof__title">HALL OF FAME</h2>
+          <p className="hof__sub">THE EVERLASTING LEGENDS</p>
+        </div>
+        <div className="hof__search">
+          <i className="fa-solid fa-magnifying-glass" aria-hidden="true" />
+          <input
+            type="search"
+            placeholder="Search player..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            aria-label="搜索选手"
+          />
+        </div>
+        <a className="sec-head__view" href="#hof-list">
+          View All
+          <i className="fa-solid fa-arrow-right-long" aria-hidden="true" />
+        </a>
       </div>
+
+      <div className="legends">
+        {legends.map((entry, i) => (
+          <button
+            key={entry.player}
+            className={`legend-card${i === legendIdx ? ' is-active' : ''}`}
+            onClick={() => setLegendIdx(i)}
+            aria-pressed={i === legendIdx}
+          >
+            <span className="legend__badge">{String(i + 1).padStart(2, '0')}</span>
+            <LegendPhoto name={entry.player} />
+            <span className="legend__meta">
+              <span className="legend__name">{entry.player}</span>
+              <span className="legend__apps">{entry.appearances} APPEARANCES</span>
+              <span className="legend__stats">
+                <b>{entry.top10s}</b> × TOP10&ensp;<b>{entry.numberOnes}</b> × #1
+              </span>
+            </span>
+          </button>
+        ))}
+        {activeLegend ? (
+          <div className="career">
+            <div className="career__head">
+              <span className="career__title">Career Timeline</span>
+              <span className="career__who">{activeLegend.player}</span>
+            </div>
+            <div className="career__rule" aria-hidden="true" />
+            <div className="career__years" aria-hidden="true">
+              {years.map((y) => (
+                <span key={y}>{y}</span>
+              ))}
+            </div>
+            <div className="career__dots" aria-hidden="true">
+              {years.map((y) => {
+                const rank = rankByYear.get(y)
+                return <span key={y} className={`career__dot${rank ? ' is-in' : ''}${rank === 1 ? ' is-1' : ''}`} />
+              })}
+            </div>
+            <p className="career__legend">
+              {activeLegend.appearances} / {years.length} 年上榜 · 最佳 #{activeLegend.best}
+            </p>
+          </div>
+        ) : null}
+      </div>
+
       <div className="hof__stats" ref={statsRef} data-reveal>
-        <HoFStat end={all.length} label="不同选手曾上榜" active={statsActive} />
+        <HoFStat end={all.length} label="位选手曾上榜" active={statsActive} />
         <HoFStat end={tenPlus} label="上榜 ≥ 10 次" active={statsActive} />
         <HoFStat end={all.filter((e) => e.numberOnes > 0).length} label="曾登顶年度第一" active={statsActive} />
-        <HoFStat end={all.filter((e) => e.top10s >= 5).length} label="前十 ≥ 5 次" active={statsActive} />
+        <HoFStat end={entries} label="个 TOP20 名额" active={statsActive} />
       </div>
+
       <div className="hof__toolbar" data-reveal>
         <div className="hof__sorts">
           {SORTS.map((s) => (
@@ -136,15 +230,9 @@ export default function HallOfFame() {
             </button>
           ))}
         </div>
-        <input
-          className="hof__search"
-          type="search"
-          placeholder="搜索选手名…"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
       </div>
-      <div data-reveal>
+
+      <div id="hof-list" data-reveal>
         <ol className="hof__list hof__list--swap" key={`${sortKey}-${query}`}>
           {list.map((entry, i) => (
             <HoFRow key={entry.player} entry={entry} index={i} />

@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { gsap, useGSAP } from '../lib/motion'
 import {
   championTop20,
   finalMapsOf,
@@ -13,19 +14,32 @@ import {
 import type { Major, PlayerMatchStat } from '../data'
 import { useLockBody, useOnKey } from '../hooks'
 import PlayerAvatar from './PlayerAvatar'
-import TeamBadge from './TeamBadge'
+import TeamLogo from './TeamLogo'
 
-function ScoreBar({ label, score, max, side }: { label: string; score: number; max: number; side: 'c' | 'r' }) {
+function ScoreBar({ score, max, side }: { score: number; max: number; side: 'c' | 'r' }) {
   return (
-    <div className="maprow__side">
-      <span className="maprow__name">{label}</span>
-      <div className="maprow__bar">
-        <span
-          className={`maprow__fill maprow__fill--${side}`}
-          style={{ width: `${(score / max) * 100}%` }}
-        />
+    <span
+      className={`maprow__fill maprow__fill--${side}`}
+      style={{ width: `${Math.max(6, (score / max) * 100)}%` }}
+    />
+  )
+}
+
+function MapRow({ mp }: { mp: { map: string; scores: number[] } }) {
+  const [c, r] = mp.scores
+  const max = Math.max(c, r) || 1
+  return (
+    <div className="maprow">
+      <span className="maprow__name">{mp.map}</span>
+      <div className="maprow__bars" aria-hidden="true">
+        <ScoreBar score={c} max={max} side="c" />
+        <ScoreBar score={r} max={max} side="r" />
       </div>
-      <b className="maprow__score">{score}</b>
+      <b className="maprow__score">
+        <span className={c >= r ? 'is-win' : ''}>{c}</span>
+        <i aria-hidden="true">—</i>
+        <span className={r > c ? 'is-win' : ''}>{r}</span>
+      </b>
     </div>
   )
 }
@@ -121,7 +135,7 @@ function StatTable({
   return (
     <div className="mstats__team">
       <div className="mstats__team-name">
-        <TeamBadge team={alias(team)} size={22} />
+        <TeamLogo team={alias(team)} size={22} />
         <span>{alias(team)}</span>
       </div>
       <div className="mstats__scroll">
@@ -174,6 +188,30 @@ function StatTable({
 
 function MatchStats({ major }: { major: Major }) {
   const [tab, setTab] = useState(0)
+  const teamsRef = useRef<HTMLDivElement>(null)
+  const prevTabRef = useRef<number | null>(null)
+
+  // Tab 切换桥接：新表格挂载后淡入上浮，避免内容瞬变（首次挂载交给详情页级联）
+  useGSAP(
+    () => {
+      const prevTab = prevTabRef.current
+      prevTabRef.current = tab
+      if (prevTab === null || prevTab === tab) return
+      const el = teamsRef.current
+      if (!el) return
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        gsap.fromTo(
+          el,
+          { autoAlpha: 0, y: 12 },
+          { autoAlpha: 1, y: 0, duration: 0.32, ease: 'power3.out' },
+        )
+      })
+      return () => mm.revert()
+    },
+    { dependencies: [tab], revertOnUpdate: true },
+  )
+
   const entry = matchStats[major.id]
   if (!entry || !entry.stats || Object.keys(entry.stats).length < 2) return null
   const maps = entry.maps ?? []
@@ -185,7 +223,7 @@ function MatchStats({ major }: { major: Major }) {
   return (
     <section className="detail__section">
       <h4>
-        决赛选手数据 <small>全场 · HLTV 官方统计</small>
+        决赛选手数据 <small>GRAND FINAL STATS · HLTV</small>
       </h4>
       <div className="mstats__tabs" role="tablist">
         <button
@@ -214,7 +252,7 @@ function MatchStats({ major }: { major: Major }) {
           )
         })}
       </div>
-      <div className="mstats__teams">
+      <div className="mstats__teams" ref={teamsRef}>
         {tables.map(([team, rows]) => (
           <StatTable key={team + (isMap ? isMap.map : 'all')} team={team} rows={rows} mvp={major.mvp} />
         ))}
@@ -277,9 +315,60 @@ export default function MajorDetail({
     !!major,
   )
 
-  useEffect(() => {
-    if (major) window.scrollTo({ top: 0 })
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const bodyRef = useRef<HTMLElement>(null)
+  const prevIdxRef = useRef<number | null>(null)
+
+  useLayoutEffect(() => {
+    if (major) {
+      window.scrollTo({ top: 0 })
+      // 覆盖层自身才是滚动容器，翻页时必须在同一帧复位，避免新内容从旧滚动位置闪现
+      overlayRef.current?.scrollTo({ top: 0 })
+    }
   }, [id, major])
+
+  // 入场与翻页共用一套 GSAP 编排：
+  // 首次挂载 → 子级纵向级联（接管原 detail-rise CSS 动画）；
+  // 前后翻页 → 内容按方向横向滑入，让「回溯 / 前进」有空间感；
+  // 比分条在级联到达「决赛地图」一节后从各自得分侧生长。
+  useGSAP(
+    () => {
+      const body = bodyRef.current
+      if (!body) return
+      const idx = majors.findIndex((m) => m.id === id)
+      const prevIdx = prevIdxRef.current
+      prevIdxRef.current = idx
+      const dir = prevIdx === null || prevIdx === idx ? 0 : idx > prevIdx ? 1 : -1
+
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        const sections = gsap.utils.toArray<HTMLElement>(body.children)
+        if (dir === 0) {
+          gsap.fromTo(
+            sections,
+            { autoAlpha: 0, y: 22 },
+            { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.065, delay: 0.05 },
+          )
+        } else {
+          gsap.fromTo(
+            sections,
+            { autoAlpha: 0, x: 26 * dir },
+            { autoAlpha: 1, x: 0, duration: 0.4, ease: 'power3.out', stagger: 0.045 },
+          )
+        }
+        const fills = gsap.utils.toArray<HTMLElement>(body.querySelectorAll('.maprow__fill'))
+        if (fills.length) {
+          gsap.fromTo(
+            fills,
+            { scaleX: 0 },
+            { scaleX: 1, duration: 0.6, ease: 'expo.out', delay: 0.25, stagger: 0.08 },
+          )
+        }
+      })
+      return () => mm.revert()
+    },
+    { dependencies: [id], revertOnUpdate: true, scope: bodyRef },
+  )
 
   if (!major) return null
   const idx = majors.findIndex((m) => m.id === id)
@@ -288,10 +377,10 @@ export default function MajorDetail({
   const maps = finalMapsOf(major)
   const videos = videosOf(major)
   const inTop20 = championTop20(major)
-  const maxScore = Math.max(19, ...maps.flatMap((mp) => mp.scores))
 
   return (
     <motion.div
+      ref={overlayRef}
       className={`detail era-${major.era === 'CS2' ? 'cs2' : 'csgo'}`}
       role="dialog"
       aria-modal="true"
@@ -309,7 +398,7 @@ export default function MajorDetail({
         </span>
       </div>
 
-      <article className="detail__body">
+      <article className="detail__body" ref={bodyRef}>
         <header className="detail__hero">
           <p className="detail__kicker">
             {major.era} · {major.dates.replace(/\s*[–—]\s*/, '-')}
@@ -320,7 +409,7 @@ export default function MajorDetail({
           </p>
           <div className="detail__duel">
             <div className="detail__team">
-              <TeamBadge team={major.champion.team} size={92} />
+              <TeamLogo team={major.champion.team} size={92} />
               <div>
                 <span className="detail__tag">CHAMPION · 第 {priorTitles(major) + 1} 冠</span>
                 <h3>{major.champion.team}</h3>
@@ -328,12 +417,12 @@ export default function MajorDetail({
               </div>
             </div>
             <div className="detail__vs">
-              <b>{major.score}</b>
+              <b>{major.score.replace('–', ' — ')}</b>
               <span>MVP</span>
               <em>{major.mvp}</em>
             </div>
             <div className="detail__team detail__team--runner">
-              <TeamBadge team={major.runnerUp.team} size={92} />
+              <TeamLogo team={major.runnerUp.team} size={92} />
               <div>
                 <span className="detail__tag">RUNNER-UP · 亚军</span>
                 <h3>{major.runnerUp.team}</h3>
@@ -344,13 +433,12 @@ export default function MajorDetail({
         </header>
 
         <section className="detail__section">
-          <h4>决赛地图</h4>
+          <h4>
+            决赛地图 <small>FINAL MAPS</small>
+          </h4>
           <div className="maprows">
             {maps.map((mp) => (
-              <div className="maprow" key={mp.map}>
-                <ScoreBar label={mp.map} score={mp.scores[0]} max={maxScore} side="c" />
-                <ScoreBar label={mp.map} score={mp.scores[1]} max={maxScore} side="r" />
-              </div>
+              <MapRow key={mp.map} mp={mp} />
             ))}
           </div>
         </section>
@@ -358,7 +446,9 @@ export default function MajorDetail({
         <MatchStats major={major} />
 
         <section className="detail__section">
-          <h4>淘汰赛四强</h4>
+          <h4>
+            淘汰赛四强 <small>PLAYOFF</small>
+          </h4>
           <div className="detail__bracket">
             <div className="detail__slot detail__slot--champ">
               <span>冠军</span>
@@ -380,11 +470,13 @@ export default function MajorDetail({
         </section>
 
         <section className="detail__section">
-          <h4>参赛队伍（{major.participants.length}）</h4>
+          <h4>
+            参赛队伍（{major.participants.length}） <small>PARTICIPANTS</small>
+          </h4>
           <div className="detail__chips">
             {major.participants.map((team) => (
               <span className="chip" key={team}>
-                <TeamBadge team={team} size={24} />
+                <TeamLogo team={team} size={24} />
                 {team}
               </span>
             ))}
@@ -410,7 +502,9 @@ export default function MajorDetail({
 
         {videos.length > 0 ? (
           <section className="detail__section">
-            <h4>名场面 · 决赛视频</h4>
+            <h4>
+            名场面 · 决赛视频 <small>VIDEO ARCHIVE</small>
+          </h4>
             <div className="detail__videos">
               {videos.map((v) => (
                 <VideoBlock key={v.id} id={v.id} label={v.label} title={v.title} />

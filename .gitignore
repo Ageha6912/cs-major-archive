@@ -36,3 +36,8 @@ data/top20_links.json
 data/top20_liqui.json
 data/videos_candidates.json
 data/logo_fetch*.json
+
+# Local design references & workflow workspace
+/ui-replica/
+深色《反恐精英》Major历史档案馆界面.png
+.zcodeignore

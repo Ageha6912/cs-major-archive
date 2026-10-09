@@ -87,11 +87,22 @@ export function playerImage(name: string): string | undefined {
   return PLAYER_AVATARS.get(name)
 }
 
-export function visualPeriod(year: number): 'heritage' | 'expansion' | 'contemporary' | 'current' {
-  if (year <= 2015) return 'heritage'
-  if (year <= 2019) return 'expansion'
-  if (year <= 2024) return 'contemporary'
-  return 'current'
+/**
+ * 拆分 "City, Region, Country" 式的 location。
+ * 数据里格式不统一（如 "Atlanta, Georgia (U.S. state)"），只在末段不含括号时才视作国家，
+ * 否则只返回城市，避免展示错误信息。
+ */
+export function locationParts(location: string): { city: string; country: string | null } {
+  const segments = location.split(',').map((s) => s.trim()).filter(Boolean)
+  const city = segments[0] ?? location
+  const last = segments[segments.length - 1]
+  const country = segments.length >= 2 && last && !last.includes('(') ? last : null
+  return { city, country }
+}
+
+/** 去掉 fullName 末尾的年份，如 "IEM Cologne Major 2026" → "IEM Cologne Major" */
+export function eventName(fullName: string, year: number): string {
+  return fullName.replace(new RegExp(`\\s*${year}\\s*$`), '')
 }
 /** Real team logos bundled in /public/logos; teams without one fall back to monograms. */
 export const TEAM_LOGOS: Record<string, string> = {
@@ -102,14 +113,14 @@ export const TEAM_LOGOS: Record<string, string> = {
   'Gambit Esports': '/logos/gambitesports.svg',
   'Luminosity Gaming': '/logos/luminositygaming.svg',
   'Natus Vincere': '/logos/natusvincere.svg',
-  'Ninjas in Pyjamas': '/logos/ninjasinpyjamas.svg',
+  'Ninjas in Pyjamas': '/logos/ninjasinpyjamas.png',
   Outsiders: '/logos/outsiders.png',
-  'SK Gaming': '/logos/skgaming.svg',
-  'Team EnVyUs': '/logos/teamenvyus.svg',
+  'SK Gaming': '/logos/skgaming.png',
+  'Team EnVyUs': '/logos/teamenvyus.png',
   'Team Falcons': '/logos/teamfalcons.svg',
   'Team LDLC.com': '/logos/teamldlccom.svg',
-  'Team Spirit': '/logos/teamspirit.svg',
-  'Team Vitality': '/logos/teamvitality.svg',
+  'Team Spirit': '/logos/teamspirit.png',
+  'Team Vitality': '/logos/teamvitality.png',
   'Virtus.pro': '/logos/virtuspro.png',
   'AVANGAR': '/logos/avangar.png',
   'Apeks': '/logos/apeks.jpg',
@@ -312,34 +323,6 @@ export function hallOfFame(): HoFEntry[] {
   return list
 }
 
-/** 赛事中文短名（城市），如「2026年科隆」 */
-export const CITY_ZH: Record<string, string> = {
-  dhw2013: '延雪平',
-  katowice2014: '卡托维兹',
-  cologne2014: '科隆',
-  dhw2014: '延雪平',
-  katowice2015: '卡托维兹',
-  cologne2015: '科隆',
-  cluj2015: '克卢日-纳波卡',
-  columbus2016: '哥伦布',
-  cologne2016: '科隆',
-  atlanta2017: '亚特兰大',
-  krakow2017: '克拉科夫',
-  boston2018: '波士顿',
-  london2018: '伦敦',
-  katowice2019: '卡托维兹',
-  berlin2019: '柏林',
-  stockholm2021: '斯德哥尔摩',
-  antwerp2022: '安特卫普',
-  rio2022: '里约热内卢',
-  paris2023: '巴黎',
-  copenhagen2024: '哥本哈根',
-  shanghai2024: '上海',
-  austin2025: '奥斯汀',
-  budapest2025: '布达佩斯',
-  cologne2026: '科隆',
-}
-
 /** 赛事主办方：有 Logo 用图片，否则用文字徽标 */
 export const ORGANIZERS: Record<string, { label: string; logo?: string }> = {
   dhw2013: { label: 'DreamHack' },
@@ -366,70 +349,4 @@ export const ORGANIZERS: Record<string, { label: string; logo?: string }> = {
   austin2025: { label: 'BLAST', logo: '/organizers/blast.svg' },
   budapest2025: { label: 'StarLadder' },
   cologne2026: { label: 'IEM', logo: '/organizers/iem.svg' },
-}
-
-/** 各战队主题色（卡片光晕 / Logo 发光），无记录时回退灰色 */
-export const TEAM_COLORS: Record<string, string> = {
-  Astralis: '#e23b2e',
-  Cloud9: '#5b7cfa',
-  'FaZe Clan': '#f15a22',
-  Fnatic: '#ff7900',
-  'Gambit Esports': '#e5484d',
-  'Gambit Gaming': '#e5484d',
-  'Luminosity Gaming': '#3b82f6',
-  'Natus Vincere': '#ffe600',
-  'Ninjas in Pyjamas': '#f2c72d',
-  Outsiders: '#a855f7',
-  'SK Gaming': '#e8c15a',
-  'Team EnVyUs': '#58a6ff',
-  'Team Falcons': '#00d68f',
-  'Team LDLC.com': '#2f9dff',
-  'Team Spirit': '#38bdf8',
-  'Team Vitality': '#facc15',
-  'Virtus.pro': '#f2c14e',
-  AVANGAR: '#e879f9',
-  Apeks: '#94a3b8',
-  'Astana Dragons': '#fb923c',
-  'Aurora Gaming': '#f43f5e',
-  BIG: '#eab308',
-  'BetBoom Team': '#22c55e',
-  'Copenhagen Flames': '#fb7185',
-  'Copenhagen Wolves': '#a78bfa',
-  'Counter Logic Gaming': '#ffd166',
-  ENCE: '#00b4d8',
-  'Epsilon eSports': '#8b5cf6',
-  'Eternal Fire': '#f97316',
-  'FURIA Esports': '#fbbf24',
-  'FlipSid3 Tactics': '#f472b6',
-  'G2 Esports': '#e9c46a',
-  GamerLegion: '#60a5fa',
-  HellRaisers: '#ef4444',
-  Heroic: '#fb4d6d',
-  Immortals: '#fbbf24',
-  'Into the Breach': '#c084fc',
-  'Keyd Stars': '#22d3ee',
-  'LGB eSports': '#94a3b8',
-  MIBR: '#f87171',
-  MOUZ: '#d4af37',
-  mousesports: '#d4af37',
-  Monte: '#8b5cf6',
-  'NRG Esports': '#facc15',
-  North: '#3b82f6',
-  'PENTA Sports': '#cbd5e1',
-  'Quantum Bellator Fire': '#f97316',
-  'Recursive eSports': '#64748b',
-  Renegades: '#fb923c',
-  'Team Dignitas': '#f59e0b',
-  'Team Kinguin': '#a3e635',
-  'Team Liquid': '#00a7e1',
-  'Team SoloMid': '#ef4444',
-  'The MongolZ': '#60a5fa',
-  VeryGames: '#2dd4bf',
-  'compLexity Gaming': '#f97316',
-  'paiN Gaming': '#e11d48',
-  '9z Team': '#84cc16',
-}
-
-export function teamColor(team: string): string {
-  return TEAM_COLORS[team] ?? '#94a3b8'
 }

@@ -1,193 +1,208 @@
 import { useEffect, useRef, useState } from 'react'
-import { finalMapsOf, formatPurse, videosOf, visualPeriod } from '../data'
+import stageCard from '../assets/archive/stage-card.jpg'
+import { eventName, finalMapsOf, formatPurse, videosOf } from '../data'
 import type { Major } from '../data'
-import TeamBadge from './TeamBadge'
-
-function MapsDial() {
-  return (
-    <span className="tl__dial" aria-hidden="true">
-      <svg viewBox="0 0 52 30" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-        <path d="M4 25a22 22 0 0 1 44 0" />
-        <path d="M26 25V3" />
-        <circle cx="26" cy="25" r="3" fill="currentColor" stroke="none" />
-        <path d="M12 19c5-6 12-8 28-7" />
-      </svg>
-    </span>
-  )
-}
-
-function MapsSummary({ major }: { major: Major }) {
-  const maps = finalMapsOf(major)
-  if (maps.length === 0) return null
-
-  return (
-    <div className="tl__maps">
-      <MapsDial />
-      {maps.map((mp) => (
-        <span className="tl__map" key={mp.map + mp.scores.join('-')}>
-          <i>{mp.map}</i>
-          <b>
-            {mp.scores[0]} : {mp.scores[1]}
-          </b>
-        </span>
-      ))}
-    </div>
-  )
-}
+import TeamLogo from './TeamLogo'
 
 export default function Timeline({
-  majors,
+  majors: allMajors,
   onSelect,
 }: {
   majors: Major[]
   onSelect: (id: string) => void
 }) {
-  const [expanded, setExpanded] = useState(false)
-  const lineRef = useRef<HTMLDivElement>(null)
-  const spineRef = useRef<HTMLSpanElement>(null)
-  const COLLAPSED_COUNT = 6
-  const visible = expanded ? majors : majors.slice(0, COLLAPSED_COUNT)
+  const [selectedId, setSelectedId] = useState(allMajors[allMajors.length - 1].id)
+  const railRef = useRef<HTMLUListElement>(null)
+  const selected = allMajors.find((m) => m.id === selectedId) ?? allMajors[allMajors.length - 1]
+  const rail = [...allMajors].reverse()
+  const videos = videosOf(selected)
+  const thumb = videos[0]
+  const maps = finalMapsOf(selected)
+  const idx = allMajors.indexOf(selected)
 
-  // 流光脊线：scaleY 直接写 DOM，随阅读进度生长
+  // 选中项在年份轨内保持可见（只滚轨道自身，绝不能把页面滚走）
   useEffect(() => {
-    const line = lineRef.current
-    const spine = spineRef.current
-    if (!line || !spine) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    let raf = 0
-    const update = () => {
-      raf = 0
-      const rect = line.getBoundingClientRect()
-      const p = Math.min(1, Math.max(0, (window.innerHeight * 0.72 - rect.top) / rect.height))
-      spine.style.transform = `scaleY(${p})`
-    }
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-      if (raf) cancelAnimationFrame(raf)
-    }
-  }, [expanded])
+    const el = railRef.current
+    const btn = el?.querySelector<HTMLButtonElement>('.chron__year.is-active')
+    if (!el || !btn) return
+    const target = btn.offsetLeft - (el.clientWidth - btn.offsetWidth) / 2
+    if (el.scrollWidth > el.clientWidth) el.scrollTo({ left: Math.max(0, target), behavior: 'smooth' })
+    const top = btn.offsetTop - (el.clientHeight - btn.offsetHeight) / 2
+    if (el.scrollHeight > el.clientHeight) el.scrollTo({ top: Math.max(0, top), behavior: 'smooth' })
+  }, [selectedId])
 
-  // 已读过的年份节点点亮
-  useEffect(() => {
-    const nodes = lineRef.current?.querySelectorAll('.tl__node')
-    if (!nodes) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-lit')
-            io.unobserve(entry.target)
-          }
-        }
-      },
-      { rootMargin: '0px 0px -55% 0px' },
-    )
-    nodes.forEach((n) => io.observe(n))
-    return () => io.disconnect()
-  }, [expanded])
+  const viewAll = () => {
+    document.getElementById('hall')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
-    <section className="tl section" id="timeline">
-      <div className="section-head" data-reveal>
-        <p className="section-head__kicker">CHRONICLE · 编年史</p>
-        <h2 className="section-head__title">历届征程</h2>
-        <p className="section-head__desc">按下时间顺序，重温每一届的决赛、地图与主角。</p>
-      </div>
-      <div className="tl__line" ref={lineRef}>
-        <span className="tl__spine" ref={spineRef} aria-hidden="true" />
-        {visible.map((m, i) => {
-          const videos = videosOf(m)
-          const thumb = videos[0]
-          const fresh = expanded && i >= COLLAPSED_COUNT
-          return (
-            <article
-              className={`tl__item period-${visualPeriod(m.year)} era-${m.era === 'CS2' ? 'cs2' : 'csgo'}${fresh ? ' tl__item--fresh' : ''}`}
-              key={m.id}
-              {...(fresh ? {} : { 'data-reveal': '' })}
-              style={{ ['--i' as string]: i }}
+    <section className="chron band" id="timeline">
+      <div className="chron__grid">
+        <div
+          className="panel chron__main"
+          data-reveal
+          onClick={(e) => {
+            if ((e.target as HTMLElement).closest('a,button,input')) return
+            onSelect(selectedId)
+          }}
+        >
+          <div className="chron__head sec-head">
+            <span className="sec-head__bar" aria-hidden="true" />
+            <h2 className="sec-head__title">THE CHRONICLE</h2>
+            <span className="sec-head__sub">A TIMELINE OF GLORY</span>
+            <button className="sec-head__view" onClick={viewAll}>
+              VIEW ALL
+              <i className="fa-solid fa-arrow-right-long" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="chron__body" key={selectedId}>
+            <ul className="chron__rail" ref={railRef} aria-label="按年份选择赛事">
+              {rail.map((m) => (
+                <li key={m.id}>
+                  <button
+                    className={`chron__year era-${m.era === 'CS2' ? 'cs2' : 'csgo'} ${m.id === selectedId ? 'is-active' : ''}`}
+                    onClick={() => setSelectedId(m.id)}
+                  >
+                    {m.year}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              className="chron__photo"
+              href={thumb ? `https://www.youtube.com/watch?v=${thumb.id}` : undefined}
+              target="_blank"
+              rel="noreferrer"
+              style={{ ['--stage-photo' as string]: `url(${thumb ? `https://i.ytimg.com/vi/${thumb.id}/hqdefault.jpg` : stageCard})` }}
+              title={thumb ? thumb.title : selected.fullName}
+              aria-label={thumb ? '观看名场面视频' : selected.fullName}
             >
-              <div className="tl__node">
-                <span className="tl__node-year">{m.year}</span>
+              <span className="chron__watch">
+                <i className="fa-solid fa-play" aria-hidden="true" />
+                WATCH VIDEO
+              </span>
+            </a>
+
+            <div className="chron__info">
+              <div className="chron__rowhead">
+                <span className="chron__sel-year">{selected.year}</span>
+                <h3>{eventName(selected.fullName, selected.year).toUpperCase()}</h3>
+                <span className={`chron__badge${selected.era === 'CS2' ? '' : ' chron__badge--csgo'}`}>
+                  {selected.era}
+                </span>
               </div>
-              <div className="tl__card" onClick={() => onSelect(m.id)}>
-                <header className="tl__head">
-                  <div>
-                    <span className="tl__era">{m.era}</span>
-                    <h3>{m.fullName}</h3>
-                    <p className="tl__venue">
-                      {m.venue} · {m.location} · {formatPurse(m.purse)}
-                    </p>
-                  </div>
-                  <span className="tl__arrow">→</span>
-                </header>
-                <div className="tl__duel">
-                  <div className="tl__team">
-                    <TeamBadge team={m.champion.team} size={34} />
-                    <div>
-                      <b className="tl__champ">冠军</b>
-                      <span>{m.champion.team}</span>
-                    </div>
-                  </div>
-                  <div className="tl__score">
-                    <b>{m.score}</b>
-                    <span>MVP {m.mvp}</span>
-                  </div>
-                  <div className="tl__team tl__team--runner">
-                    <TeamBadge team={m.runnerUp.team} size={34} />
-                    <div>
-                      <b>亚军</b>
-                      <span>{m.runnerUp.team}</span>
-                    </div>
-                  </div>
+              <dl className="chron__rows">
+                <div className="chron__row">
+                  <i className="fa-solid fa-shield-halved" aria-hidden="true" />
+                  <dt>Champion</dt>
+                  <dd>
+                    <TeamLogo team={selected.champion.team} size={14} />
+                    <b>{selected.champion.team}</b>
+                  </dd>
                 </div>
-                <MapsSummary major={m} />
-                {thumb ? (
-                  <div className="tl__thumb" onClick={(e) => e.stopPropagation()}>
-                    <a
-                      href={`https://www.youtube.com/watch?v=${thumb.id}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      title={thumb.title}
-                    >
-                      <img
-                        src={`https://i.ytimg.com/vi/${thumb.id}/hqdefault.jpg`}
-                        alt={thumb.title}
-                        loading="lazy"
-                      />
-                      <span className="tl__play" aria-hidden="true">
-                        ▶
-                      </span>
-                      <span className="tl__thumb-label">{thumb.label}</span>
-                    </a>
-                  </div>
-                ) : null}
+                <div className="chron__row">
+                  <i className="fa-solid fa-medal" aria-hidden="true" />
+                  <dt>Runner-up</dt>
+                  <dd>
+                    <TeamLogo team={selected.runnerUp.team} size={14} />
+                    <span>{selected.runnerUp.team}</span>
+                  </dd>
+                </div>
+                <div className="chron__row">
+                  <i className="fa-solid fa-display" aria-hidden="true" />
+                  <dt>Final</dt>
+                  <dd>
+                    <span className="chron__score">{selected.score.replace('–', ' : ')}</span>
+                    <small>MVP {selected.mvp}</small>
+                  </dd>
+                </div>
+                <div className="chron__row">
+                  <i className="fa-solid fa-coins" aria-hidden="true" />
+                  <dt>Prize Pool</dt>
+                  <dd>{formatPurse(selected.purse)}</dd>
+                </div>
+                <div className="chron__row">
+                  <i className="fa-solid fa-location-dot" aria-hidden="true" />
+                  <dt>Venue</dt>
+                  <dd>{selected.venue}</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div className="chron__maps">
+              {maps.length > 0 ? (
+                <>
+                  <p className="chron__maps-head">FINAL MAPS</p>
+                  {maps.map((mp, i) => (
+                    <div className="chron__map" key={mp.map}>
+                      <i>{i + 1}</i>
+                      <b>{mp.map}</b>
+                      <em>
+                        {mp.scores[0]} : {mp.scores[1]}
+                      </em>
+                    </div>
+                  ))}
+                </>
+              ) : null}
+            </div>
+
+            {thumb ? (
+              <div className="chron__hl">
+                <a
+                  className="chron__hl-thumb"
+                  href={`https://www.youtube.com/watch?v=${thumb.id}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ ['--hl-photo' as string]: `url(https://i.ytimg.com/vi/${thumb.id}/hqdefault.jpg)` }}
+                  title={thumb.title}
+                >
+                  <span className="chron__hl-play" aria-hidden="true">
+                    <span>
+                      <i className="fa-solid fa-play" />
+                    </span>
+                  </span>
+                </a>
+                <p className="chron__hl-name">Match Highlights</p>
+                <a
+                  className="chron__hl-link"
+                  href={`https://www.youtube.com/watch?v=${thumb.id}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Watch Video
+                  <i className="fa-solid fa-arrow-right-long" aria-hidden="true" />
+                </a>
               </div>
-            </article>
-          )
-        })}
+            ) : (
+              <div className="chron__hl">
+                <p className="chron__hl-name">{selected.dates}</p>
+                <button className="chron__hl-link" onClick={() => onSelect(selected.id)}>
+                  View Archive
+                  <i className="fa-solid fa-arrow-right-long" aria-hidden="true" />
+                </button>
+              </div>
+            )}
+          </div>
+          <p className="chron__legend">
+            第 {idx + 1} / {allMajors.length} 届 · 点击年份切换，点击面板空白处打开完整档案
+          </p>
+        </div>
+
+        <aside className="panel chron-aside" data-reveal>
+          <div className="chron-aside__inner">
+            <span className="chron-aside__bar" aria-hidden="true" />
+            <blockquote className="chron-aside__quote">
+              <em>“Counter-Strike</em>
+              <br />
+              Majors are more than tournaments.
+              <br />
+              They are the history of a generation.”
+            </blockquote>
+            <p className="chron-aside__sig">CS MAJOR ARCHIVE</p>
+          </div>
+        </aside>
       </div>
-      {!expanded ? (
-        <div className="tl__toggle-wrap" data-reveal>
-          <button className="tl__toggle" onClick={() => setExpanded(true)}>
-            展开全部 {majors.length} 届
-            <span>还有 {majors.length - COLLAPSED_COUNT} 届待展开</span>
-            <i aria-hidden="true">▾</i>
-          </button>
-        </div>
-      ) : (
-        <div className="tl__toggle-wrap" data-reveal>
-          <button className="tl__toggle tl__toggle--close" onClick={() => setExpanded(false)}>
-            收起编年史 <i aria-hidden="true">▴</i>
-          </button>
-        </div>
-      )}
     </section>
   )
 }
